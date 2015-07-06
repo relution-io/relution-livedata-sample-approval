@@ -1,11 +1,11 @@
 <div class="button-bar" ng-if="approvalViewFooterC.item.state === 'open'">
   <a class="button button-assertive"
      ng-if="approvalViewFooterC.item.header.typeOfMail === 'approve_or_reject'"
-     ui-sref="ibx.approval.edit({id: approvalViewFooterC.item.id, state: 'rejected'})">
+     ui-sref="mway.approval.edit({id: approvalViewFooterC.item.id, state: 'rejected'})">
     {{::'REJECT' | translate}}
   </a>
   <a class="button button-balanced"
-     ui-sref="ibx.approval.edit({id: approvalViewFooterC.item.id, state: 'approved'})">
+     ui-sref="mway.approval.edit({id: approvalViewFooterC.item.id, state: 'approved'})">
     {{::'APPROVE' | translate}}
   </a>
 </div>

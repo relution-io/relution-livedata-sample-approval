@@ -6,17 +6,11 @@
  * @description add your description
  */
 angular.module('settings')
-  .controller('SettingsCtrl', function SettingsCtrl($scope, $ionicLoading, $rootScope, isAuthorized, TokenService, Config, ServerUrlService) {
-    var self = this;
-    this.name = TokenService.storeObject.userID;
-    this.device = TokenService.storeObject.name;
-    this.tenant = TokenService.storeObject.tenant;
-    var a = function () {
-      return ServerUrlService.connection;
-    };
-    //console.log(isAuthorized, TokenService.storeObject);
+  .controller('SettingsCtrl', function SettingsCtrl($scope, $ionicLoading, $rootScope, UserService, Config) {
+    this.user = UserService.getUser();
+    this.server = Config.ENV.SERVER_URL;
+
     $scope.$on('$ionicView.enter', function () {
-      self.server = a();
       $ionicLoading.hide();
       $rootScope.$broadcast('show-content');
     });

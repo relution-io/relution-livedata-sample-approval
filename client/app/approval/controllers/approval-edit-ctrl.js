@@ -28,7 +28,7 @@ angular.module('approval')
       $ionicHistory.nextViewOptions({
         disableBack: true
       });
-      $state.go('ibx.approval.list');
+      $state.go('mway.approval.list');
     };
     this.getApprovalFromCollection = function () {
       return $q.when(ApprovalsService.entries.get($stateParams.id));

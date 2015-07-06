@@ -16,14 +16,20 @@
       </ion-item>
       <ion-item>
         <span class="row">
-          <span class="col-50">{{'LOGIN_FORM_FIELD_USER_ID'|translate}}</span>
-          <span class="col-50 text-right text-ellipsis">{{settingsC.name}}</span>
+          <span class="col-50">{{'USER_ID'|translate}}</span>
+          <span class="col-50 text-right text-ellipsis">{{settingsC.user.name}}</span>
         </span>
       </ion-item>
-      <ion-item>
+      <ion-item ng-if="settingsC.user.email">
         <span class="row">
-          <span class="col-50">{{'LOGIN_FORM_FIELD_TENANT'|translate}}</span>
-          <span class="col-50 text-right text-ellipsis">{{settingsC.tenant}}</span>
+          <span class="col-50">{{'EMAIL'|translate}}</span>
+          <span class="col-50 text-right text-ellipsis">{{settingsC.user.email}}</span>
+        </span>
+      </ion-item>
+      <ion-item ng-if="settingsC.user.country" class="{{settingsC.user.country|lowercase}}">
+        <span class="row">
+          <span class="col-50">{{'COUNTRY'|translate}}</span>
+          <span class="col-50 text-right text-ellipsis">{{settingsC.user.country}}</span>
         </span>
       </ion-item>
       <ion-item class="item item-divider">

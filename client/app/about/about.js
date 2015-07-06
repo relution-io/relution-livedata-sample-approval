@@ -28,11 +28,11 @@
 angular.module('about', [])
   .config(function ($stateProvider) {
     $stateProvider
-      .state('tab.about', {
-        parent: 'tab',
+      .state('mway.approval.about', {
+        parent: 'mway.approval',
         url: '/about',
         views: {
-          'tab-about': {
+          'approval': {
             templateUrl:  ionic.Platform.isAndroid() ? 'about/templates/about-android.html' : 'about/templates/about.html',
             controller: 'AboutCtrl as aboutC'
           }

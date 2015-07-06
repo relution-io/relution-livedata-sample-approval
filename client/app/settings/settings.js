@@ -4,8 +4,8 @@ angular.module('settings', [
 ])
 .config(function ($stateProvider) {
   $stateProvider
-    .state('ibx.approval.settings', {
-      parent:'ibx.approval',
+    .state('mway.approval.settings', {
+      parent: 'mway.approval',
       url: '/settings',
       views: {
         'approval': {
