@@ -16,7 +16,7 @@ angular.module('approval', ['main'])
             if (!LoginService.isLoggedIn) {
               return $q.when($state.go($relutionSecurityConfig.forwardStateAfterLogout));
             }
-            return $q.when(true);
+            return $q.when(false);
           }
         }
       })
@@ -30,29 +30,29 @@ angular.module('approval', ['main'])
           }
         },
         resolve: {
-          //'loadingHide': function ($ionicLoading, $q) {
-          //  return $q.when($ionicLoading.hide());
-          //},
-          //'killIframe': function ($q) {
-          //  var frames = document.getElementsByTagName('iframe');
-          //  var gapFrames = [];
-          //  angular.forEach(frames, function (value) {
-          //    if (value.src === 'gap://ready') {
-          //      gapFrames.push(value);
-          //    }
-          //  });
-          //
-          //  // delete all but the last one.
-          //  var deleteCounter = 0;
-          //  if (gapFrames.length > 1) {
-          //    for (var i = gapFrames.length - 2; i >= 0; i--) {
-          //      //console.log ("Deleting gapFrame " + i + " of " + totalLength);
-          //      angular.element(gapFrames[i]).remove();
-          //      deleteCounter++;
-          //    }
-          //  }
-          //  return $q.when(console.log('Deleted ' + deleteCounter + ' gapFrames'));
-          //}
+          'loadingHide': function ($ionicLoading, $q) {
+            return $q.when($ionicLoading.hide());
+          },
+          'killIframe': function ($q) {
+            var frames = document.getElementsByTagName('iframe');
+            var gapFrames = [];
+            angular.forEach(frames, function (value) {
+              if (value.src === 'gap://ready') {
+                gapFrames.push(value);
+              }
+            });
+
+            // delete all but the last one.
+            var deleteCounter = 0;
+            if (gapFrames.length > 1) {
+              for (var i = gapFrames.length - 2; i >= 0; i--) {
+                //console.log ("Deleting gapFrame " + i + " of " + totalLength);
+                angular.element(gapFrames[i]).remove();
+                deleteCounter++;
+              }
+            }
+            return $q.when(console.log('Deleted ' + deleteCounter + ' gapFrames'));
+          }
         }
       })
       .state('mway.approval.view', {

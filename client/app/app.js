@@ -29,6 +29,7 @@ angular.module('relutionLiveData', [
   'ngCordova',
   'relutionClientSecurity',
   'push',
+  'material',
   'pascalprecht.translate',
   'translation',
   'translation.service',

@@ -6,12 +6,12 @@
  * @name material:material-sidebar-user-header
  */
 angular.module('material')
-.directive('materialSidebarUserHeader', function MaterialSidebarUserHeader(TokenService) {
+.directive('materialSidebarUserHeader', function MaterialSidebarUserHeader(UserService) {
   return {
     templateUrl: 'material/templates/user-header.html',
     restrict: 'E',
     link: function postLink (scope) {
-      scope.user = TokenService.storeObject;
+      scope.user = UserService.getUser();
     }
   };
 });
