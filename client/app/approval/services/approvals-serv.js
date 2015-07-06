@@ -5,7 +5,7 @@
  * @description add your description
  */
 angular.module('approval')
-  .service('ApprovalsService', function ApprovalsService($q, $rootScope, $window, $filter, Bikini, Config, ServerUrlService, AlertService, TokenService) {
+  .service('ApprovalsService', function ApprovalsService($q, $rootScope, $window, $filter, RelutionLiveData, Config, ServerUrlService, AlertService) {
     var self = this;
     this.pendings = [];
     this.init = true;
@@ -22,7 +22,7 @@ angular.module('approval')
      * @name model
      * @propertyOf approval:ApprovalsService
      */
-    this.model = Bikini.Model.extend({
+    this.model = RelutionLiveData.Model.extend({
       idAttribute: 'id'
     });
     /**
@@ -207,22 +207,18 @@ angular.module('approval')
      * @methodOf approval:ApprovalsService
      */
     this.fetchCollection = function (explicit) {
-      jQuery.ajaxSetup({
-        beforeSend: TokenService.setHeader
-      });
       if (!self.collection) {
-        self.store = new Bikini.BikiniStore({
+        self.store = new RelutionLiveData.SyncStore({
           useLocalStore: true,
           useSocketNotify: true,
           useOfflineChanges: true,
-          socketQuery: 'x-approval-devicetoken=' + encodeURIComponent(TokenService.token),
           error: self.handleError.bind(self)
         });
-        self.collection = Bikini.Collection.extend({
+        self.collection = RelutionLiveData.Collection.extend({
           model: self.model,
           entity: 'approvals',
           store: self.store,
-          url: ServerUrlService.get() + Config.COLLECTIONS_URLS.APPROVALS
+          url: Config.ENV.SERVER_URL + Config.SERVER_API_PATH + Config.COLLECTIONS_URLS.APPROVALS
         });
       }
       if (!self.entries) {
@@ -230,9 +226,7 @@ angular.module('approval')
       }
       if (self.init || explicit) {
         var promise = $q(function (resolve) {
-          resolve(self.entries.fetch({
-            beforeSend: TokenService.setHeader
-          }));
+          resolve(self.entries.fetch());
         });
         return promise.then(function () {
           self.init = false;

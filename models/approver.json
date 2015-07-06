@@ -11,9 +11,20 @@
       "key": true
     },
     {
+      "name": "ids",
+      "description": "Approver id: Userid of approver, a user of the app",
+      "type": "String[]",
+      "mandatory": true
+    },
+    {
       "name": "name",
       "description": "Includes first name and last name",
       "type": "String"
+    },
+    {
+      "name": "names",
+      "description": "Includes first name and last name",
+      "type": "String[]"
     },
     {
       "name": "type",

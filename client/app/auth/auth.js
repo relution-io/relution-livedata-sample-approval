@@ -26,24 +26,13 @@
  * @description the auth module
  */
 angular.module('auth', ['main', 'relutionClientSecurity'])
-  .config(function ($stateProvider, $relutionSecurityConfigProvider, Config) {
-    $relutionSecurityConfigProvider.setLayoutStyle('INPUT_ICONS');
-    $relutionSecurityConfigProvider.setIcons();
-    $relutionSecurityConfigProvider.forwardStateAfterLogin = 'tab.messenger';
-    $relutionSecurityConfigProvider.forwardStateAfterLogout = 'auth.login';
-    $relutionSecurityConfigProvider.loginUrl = Config.ENV.SERVER_URL + Config.CURRENT_AUTHORIZATION_LOGIN;
-    $relutionSecurityConfigProvider.logoutUrl = Config.ENV.SERVER_URL + Config.CURRENT_AUTHORIZATION_LOGOUT;
+  .config(function ($stateProvider) {
     $stateProvider
-      .state('auth', {
-        url: '/auth',
-        abstract: true,
-        template: '<ion-nav-view name="auth"></ion-nav-view>'
-      })
-      .state('auth.login', {
-        parent: 'auth',
+      .state('mway.login', {
+        parent: 'mway',
         url: '/login',
         views: {
-          'auth': {
+          'mway': {
             templateUrl: 'auth/templates/login/index.html',
             controller: 'LoginCtrl as loginC'
           }

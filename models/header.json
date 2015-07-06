@@ -3,6 +3,11 @@
   "label": "header",
   "description": "Header Model",
   "attributes": [
+	{
+	  "name": "objectType",
+	  "description": "Indicates whether this is a shopping card (SC) or purchase order (PO)",
+	  "type": "String"
+	},
     {
       "name": "typeOfMail",
       "description": "Kind of email: Whether is approve/reject or Accept.",

@@ -42,9 +42,14 @@
     {
       "name": "approver",
       "description": "Metadata of approver and overall approval",
-      "type": "approver",
+      "type": "approver[]",
       "mandatory": true
     },
+	{
+	  "name": "current",
+	  "description": "Index of current step in approver array, zero based.",
+	  "type": "Integer"
+	},
     {
       "name": "requester",
       "description": "Information on requester of approval",

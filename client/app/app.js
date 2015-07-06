@@ -27,18 +27,18 @@ angular.module('relutionLiveData', [
   'angularMoment',
   'LocalForageModule',
   'ngCordova',
+  'relutionClientSecurity',
+  'push',
   'pascalprecht.translate',
   'translation',
   'translation.service',
-  'relutionClientSecurity',
   'libs',
   'auth',
   'main',
   'about',
   'network',
   'approval',
-  'settings',
-  'push'
+  'settings'
 ])
   .run(function ($ionicPlatform, $window) {
     $ionicPlatform.ready(function () {
@@ -67,12 +67,12 @@ angular.module('relutionLiveData', [
   })
   .config(function ($stateProvider, $urlRouterProvider) {
     $stateProvider
-      .state('tab', {
+      .state('mway', {
         abstract: true,
-        url: '/approval',
-        template: '<ion-nav-bar class="bar-positive"><ion-nav-back-button></ion-nav-back-button></ion-nav-bar><ion-nav-view></ion-nav-view>'
+        url: '/mway',
+        template: '<ion-nav-view name="mway"></ion-nav-view>'
       });
-    $urlRouterProvider.otherwise('auth/login');
+    $urlRouterProvider.otherwise('mway/login');
   })
   .config(function ($ionicConfigProvider) {
     if (ionic.Platform.isAndroid()) {
@@ -80,6 +80,14 @@ angular.module('relutionLiveData', [
     }
     //$ionicConfigProvider.tabs.position('bottom');
     $ionicConfigProvider.views.forwardCache(true);
+  })
+  .config(function ($relutionSecurityConfigProvider, Config) {
+    $relutionSecurityConfigProvider.setLayoutStyle('INPUT_ICONS');
+    $relutionSecurityConfigProvider.setIcons();
+    $relutionSecurityConfigProvider.forwardStateAfterLogin = 'mway.approval.list';
+    $relutionSecurityConfigProvider.forwardStateAfterLogout = 'mway.login';
+    $relutionSecurityConfigProvider.loginUrl = Config.ENV.SERVER_URL + Config.CURRENT_AUTHORIZATION_LOGIN;
+    $relutionSecurityConfigProvider.logoutUrl = Config.ENV.SERVER_URL + Config.CURRENT_AUTHORIZATION_LOGOUT;
   })
   .config(function ($ionicConfigProvider) {
     $ionicConfigProvider.backButton.text('');
@@ -104,4 +112,18 @@ angular.module('relutionLiveData', [
     if ($window.cordova) {
       $cordovaSplashscreen.hide();
     }
+    $rootScope.$on('$stateNotFound',
+      function (event, unfoundState, fromState, fromParams) {
+        console.log(unfoundState.to); // "lazy.state"
+        console.log(unfoundState.toParams); // {a:1, b:2}
+        console.log(unfoundState.options); // {inherit:false} + default options
+        console.log(fromState); // {inherit:false} + default options
+        console.log(fromParams); // {inherit:false} + default options
+      });
+    $rootScope.$on('$stateChangeError',
+      function (event, toState, toParams, fromState, fromParams, error) {
+        console.log(error); // "lazy.state"
+        console.log(fromState); // {inherit:false} + default options
+        console.log(fromParams); // {inherit:false} + default options
+      });
   });

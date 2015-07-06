@@ -6,7 +6,7 @@
  * @description add your description
  */
 angular.module('approval')
-  .controller('ApprovalListCtrl', function ApprovalListCtrl($scope, $q, $filter, $timeout, $ionicScrollDelegate, $ionicLoading, $window, MomentService, $rootScope, PushService, TokenService, isAuthorized, ApprovalsService) {
+  .controller('ApprovalListCtrl', function ApprovalListCtrl($scope, $q, $filter, $timeout, $ionicScrollDelegate, $ionicLoading, $window, MomentService, $rootScope, PushService, ApprovalsService) {
     this.available = true;
     this.inProgress = false;
     this.overflowScroll = ionic.Platform.isAndroid();

@@ -77,10 +77,10 @@
       "mandatory": true
     },
     {
-      "name": "costObject",
+      "name": "costObjects",
       "description": "Accounting Information",
-      "type": "costObject",
-      "mandatory": false
+      "type": "costObject[]",
+      "mandatory": true
     }
   ]
 }

@@ -5,16 +5,19 @@ angular.module('approval', ['main'])
       .state('mway.approval', {
         parent: 'mway',
         url: '/approval',
-        templateUrl: ionic.Platform.isAndroid() ? 'approval/templates/approval-android.html' : 'approval/templates/approval.html',
+        abstract: true,
+        views: {
+          mway:{
+            templateUrl: ionic.Platform.isAndroid() ? 'approval/templates/approval-android.html' : 'approval/templates/approval.html'
+          }
+        },
         resolve: {
-          //'push': function ($q, PushService, UserService, $window) {
-          //    if (!PushService.userUUID) {
-          //      PushService.userUUID = UserService.getUserProperty('uuid');
-          //      return $q.when(PushService.register()).then(function () {
-          //        //console.log('push i registered');
-          //      });
-          //    }
-          //}
+          'hasToken': function (LoginService, $q, $state, $relutionSecurityConfig) {
+            if (!LoginService.isLoggedIn) {
+              return $q.when($state.go($relutionSecurityConfig.forwardStateAfterLogout));
+            }
+            return $q.when(true);
+          }
         }
       })
       .state('mway.approval.list', {
@@ -27,29 +30,29 @@ angular.module('approval', ['main'])
           }
         },
         resolve: {
-          'loadingHide': function ($ionicLoading, $q) {
-            return $q.when($ionicLoading.hide());
-          },
-          'killIframe': function ($q) {
-            var frames = document.getElementsByTagName('iframe');
-            var gapFrames = [];
-            angular.forEach(frames, function (value) {
-              if (value.src === 'gap://ready') {
-                gapFrames.push(value);
-              }
-            });
-
-            // delete all but the last one.
-            var deleteCounter = 0;
-            if (gapFrames.length > 1) {
-              for (var i = gapFrames.length - 2; i >= 0; i--) {
-                //console.log ("Deleting gapFrame " + i + " of " + totalLength);
-                angular.element(gapFrames[i]).remove();
-                deleteCounter++;
-              }
-            }
-            return $q.when(console.log('Deleted ' + deleteCounter + ' gapFrames'));
-          }
+          //'loadingHide': function ($ionicLoading, $q) {
+          //  return $q.when($ionicLoading.hide());
+          //},
+          //'killIframe': function ($q) {
+          //  var frames = document.getElementsByTagName('iframe');
+          //  var gapFrames = [];
+          //  angular.forEach(frames, function (value) {
+          //    if (value.src === 'gap://ready') {
+          //      gapFrames.push(value);
+          //    }
+          //  });
+          //
+          //  // delete all but the last one.
+          //  var deleteCounter = 0;
+          //  if (gapFrames.length > 1) {
+          //    for (var i = gapFrames.length - 2; i >= 0; i--) {
+          //      //console.log ("Deleting gapFrame " + i + " of " + totalLength);
+          //      angular.element(gapFrames[i]).remove();
+          //      deleteCounter++;
+          //    }
+          //  }
+          //  return $q.when(console.log('Deleted ' + deleteCounter + ' gapFrames'));
+          //}
         }
       })
       .state('mway.approval.view', {

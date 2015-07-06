@@ -27,6 +27,9 @@
 // datasync setup
 var backbone = require('backbone');
 var datasync = require('mcap/datasync.js');
+var bson = require('bson');
+var BSON = bson.BSONPure.BSON;
+
 var options = {
 	entity: 'approvals',
 	type: {
@@ -62,15 +65,6 @@ module.exports = {
 			var model = new options.model(approval);
 			model.attributes.provider = 'sample';
 			model.attributes.state = 'open';
-			model.attributes.header = {
-				typeOfMail: 'approve_or_reject'
-			};
-			model.attributes.approver = {
-				id: thisuser
-			};
-			model.attributes.requester = {
-				id: thisuser
-			};
 			model.attributes.aclEntries = [ thisuser + ':rw' ];
 			console.log('saving model: ' + JSON.stringify(model.attributes));
 			return model.save();

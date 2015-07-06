@@ -3,5 +3,7 @@
   "version": "0.0.0",
   "main": "app.js",
   "dependencies": {},
-  "devDependencies": {}
+  "devDependencies": {
+    "bson": "^0.4.7"
+  }
 }
