@@ -1,0 +1,12 @@
+<ion-item class="item-text-wrap no-ellipsis product-item" ng-click="openModal()">
+  <h2>{{count}}. {{item.description}}</h2>
+  <p class="">{{item.vendorName}}</p>
+  <span class="row" >
+    <span class="col-66">
+      <p class="">{{item.quantity}} x {{item.priceUnit}} / {{item.unit}}</p>
+    </span>
+    <span class="col-33 item-note text-positive">
+      {{item.price|number:2}} {{item.currency}}
+    </span>
+  </span>
+</ion-item>

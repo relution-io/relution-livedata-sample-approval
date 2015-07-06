@@ -1,0 +1,11 @@
+<ion-view material-sidebar ng-controller="ApprovalCtrl as approvalC">
+  <div class="sidebar-overlay" ng-click="materialSidebarCtrl.close()"></div>
+  <aside id="sidebar" class="sidebar sidebar-default sidebar-fixed-left" role="navigation">
+    <material-sidebar-user-header></material-sidebar-user-header>
+    <material-sidebar-list links="approvalC.sideBarLinks"></material-sidebar-list>
+    <div class="transparent dark bar-footer bar">
+      <p class="col text-center claim">powered by M-Way Solutions GmbH v{{$root.appVersion}}</p>
+    </div>
+  </aside>
+  <ion-nav-view name="approval"></ion-nav-view>
+</ion-view>

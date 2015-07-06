@@ -1,0 +1,401 @@
+.md {
+  line-height: inherit;
+  vertical-align: bottom;
+}
+/* -- You can use this sidebar in Bootstrap (v3) projects. HTML-markup like Navbar bootstrap component will make your work easier. -- */
+/* -- Box model ------------------------------- */
+*,
+*:after,
+*:before {
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+}
+.sidebar-overlay {
+  visibility: hidden;
+  position: fixed;
+  top: $bar-height;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  opacity: 0;
+  background: #000;
+  z-index: 1034;
+  @include transition(visibility 0 linear 0.4s, opacity 0.4s cubic-bezier(0.4, 0, 0.2, 1));
+  @include transform(translateZ(0));
+}
+.material-toggle-button{
+  &:after{
+    color: $label !important;
+  }
+  color: $label !important;
+}
+.sidebar-overlay.active {
+  opacity: 0.1;
+  visibility: visible;
+  @include transition-delay(0);
+}
+
+.top-bar {
+  height: 25px;
+  background: rgba(0, 0, 0, 0.1);
+}
+
+/* -- Google typography ------------------------------- */
+.headline {
+  font-weight: 300;
+  line-height: 1.1;
+  color: $dark;
+  text-transform: inherit;
+  letter-spacing: inherit;
+}
+
+.subhead {
+  font-weight: 300;
+  line-height: 1.1;
+  color: $dark;
+  text-transform: inherit;
+  letter-spacing: inherit;
+}
+
+/* -- Bootstrap-like style ------------------------------- */
+.caret {
+  display: inline-block;
+  width: 0;
+  height: 0;
+  margin-left: 2px;
+  vertical-align: middle;
+  border-top: 4px solid;
+  border-right: 4px solid transparent;
+  border-left: 4px solid transparent;
+}
+
+.dropdown-menu {
+  display: none;
+}
+
+/* -- Constructor style ------------------------------- */
+.constructor {
+  position: relative;
+  margin: 0;
+  padding: 0 50px;
+  //@include transition(all 0.5s cubic-bezier(0.55, 0, 0.1, 1));
+}
+
+.sidebar,
+.wrapper {
+  display: table-cell;
+  vertical-align: top;
+}
+
+.sidebar-stacked.open + .wrapper .constructor {
+  margin-left: 280px;
+}
+
+@media (max-width: 768px) {
+  .sidebar-stacked.open + .wrapper .constructor {
+    margin-left: 240px;
+  }
+}
+
+/* -- Sidebar style ------------------------------- */
+.sidebar {
+  position: relative;
+  display: block;
+  overflow-y: auto;
+  overflow-x: hidden;
+  border: none;
+  //@include transition(all 0.5s cubic-bezier(0.55, 0, 0.1, 1));
+}
+.sidebar:before,
+.sidebar:after {
+  content: " ";
+  display: table;
+}
+
+.sidebar:after {
+  clear: both;
+}
+
+.sidebar::-webkit-scrollbar-track {
+  border-radius: 2px;
+}
+
+.sidebar::-webkit-scrollbar {
+  width: 5px;
+  background-color: #F7F7F7;
+}
+
+.sidebar::-webkit-scrollbar-thumb {
+  border-radius: 10px;
+  -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+  background-color: #BFBFBF;
+}
+
+.sidebar .sidebar-header {
+  position: relative;
+  height: 157.5px;
+  margin-bottom: 0px;
+  //-webkit-transition: all 0.2s ease-in-out;
+  //-o-transition: all 0.2s ease-in-out;
+  //transition: all 0.2s ease-in-out;
+}
+
+.sidebar .sidebar-header.header-cover {
+  background-repeat: no-repeat;
+  background-position: center center;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+}
+
+.sidebar .sidebar-header:hover .sidebar-toggle {
+  opacity: 1;
+}
+
+.sidebar .sidebar-toggle {
+  position: relative;
+  float: right;
+  margin: 16px;
+  padding: 0;
+  background-image: none;
+  border: none;
+  height: 40px;
+  width: 40px;
+  opacity: 0.7;
+  //-webkit-transition: all 0.2s ease-in-out;
+  //-o-transition: all 0.2s ease-in-out;
+  //transition: all 0.2s ease-in-out;
+}
+
+.sidebar .sidebar-toggle:before,
+.sidebar .sidebar-toggle:after {
+  content: " ";
+  display: table;
+}
+
+.sidebar .sidebar-toggle:after {
+  clear: both;
+}
+
+.sidebar .sidebar-image img {
+  width: 54px;
+  height: 54px;
+  margin: 16px;
+  border-radius: 50%;
+  //-webkit-transition: all 0.2s ease-in-out;
+  //-o-transition: all 0.2s ease-in-out;
+  //transition: all 0.2s ease-in-out;
+}
+
+.sidebar .sidebar-brand {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  display: block;
+  height: 48px;
+  line-height: 48px;
+  padding: 0;
+  padding-left: 16px;
+  padding-right: 56px;
+  text-decoration: none;
+  clear: both;
+  font-weight: 500;
+  overflow: hidden;
+  -o-text-overflow: ellipsis;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  //-webkit-transition: all 0.2s ease-in-out;
+  //-o-transition: all 0.2s ease-in-out;
+  //transition: all 0.2s ease-in-out;
+}
+
+.sidebar .sidebar-brand:hover,
+.sidebar .sidebar-brand:focus {
+  -webkit-box-shadow: none;
+  box-shadow: none;
+  outline: none;
+}
+
+.sidebar .sidebar-brand .caret {
+  position: absolute;
+  right: 24px;
+  top: 24px;
+}
+
+.sidebar .sidebar-brand .sidebar-badge {
+  position: absolute;
+  right: 16px;
+  top: 12px;
+}
+
+.sidebar .sidebar-brand:hover,
+.sidebar .sidebar-brand:focus {
+  text-decoration: none;
+}
+
+.sidebar .sidebar-badge {
+  display: inline-block;
+  min-width: 24px;
+  height: 24px;
+  line-height: 24px;
+  padding: 0 3px;
+  text-align: center;
+  white-space: nowrap;
+  vertical-align: baseline;
+}
+
+.sidebar .sidebar-badge.badge-circle {
+  border-radius: 50%;
+}
+
+.sidebar .sidebar-divider,
+.sidebar .sidebar-nav .divider {
+  position: relative;
+  display: block;
+  height: 1px;
+  margin: 8px 0;
+  padding: 0;
+  overflow: hidden;
+}
+
+.sidebar .sidebar-text {
+  display: block;
+  height: 48px;
+  line-height: 48px;
+  padding: 0;
+  padding-left: 16px;
+  padding-right: 56px;
+  text-decoration: none;
+  clear: both;
+  font-weight: 500;
+  overflow: hidden;
+  -o-text-overflow: ellipsis;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  //-webkit-transition: all 0.2s ease-in-out;
+  //-o-transition: all 0.2s ease-in-out;
+  //transition: all 0.2s ease-in-out;
+}
+
+.sidebar .sidebar-text:hover,
+.sidebar .sidebar-text:focus {
+  -webkit-box-shadow: none;
+  box-shadow: none;
+  outline: none;
+}
+
+.sidebar .sidebar-text .caret {
+  position: absolute;
+  right: 24px;
+  top: 24px;
+}
+
+.sidebar .sidebar-text .sidebar-badge {
+  position: absolute;
+  right: 16px;
+  top: 12px;
+}
+
+.sidebar .sidebar-icon {
+  display: inline-block;
+  text-align: left;
+  font-size: 20px;
+}
+
+.sidebar .sidebar-icon:before,
+.sidebar .sidebar-icon:after {
+  vertical-align: middle;
+}
+
+.sidebar .sidebar-nav {
+  margin: 0;
+  padding: 0;
+}
+.sidebar-default {
+  background-color: #ffffff;
+}
+.sidebar {
+  width: 0;
+  -webkit-transform: translate3d(-280px, 0, 0);
+  transform: translate3d(-280px, 0, 0);
+  .bar-footer{
+    bottom: 34px !important;
+  }
+}
+
+.sidebar.open {
+  -webkit-transform: translate3d(0, 0, 0);
+  transform: translate3d(0, 0, 0);
+}
+
+.sidebar-fixed-left {
+  position: fixed;
+  top: $bar-height;
+  bottom: 0;
+  z-index: 1035;
+  left: 0;
+  box-shadow: 2px 0px 15px rgba(0, 0, 0, 0.35);
+  -webkit-box-shadow: 2px 0px 15px rgba(0, 0, 0, 0.35);
+}
+.sidebar .item{
+  color: $dark;
+  &.active{
+    color: $positive;
+  }
+}
+@media (max-width: 768px) {
+  .sidebar.open {
+    //min-width: 80%;
+    //width: 80%;
+  }
+  .sidebar .sidebar-header {
+    background-color: $dark;
+    height: 135px;
+    display: flex;
+    align-items: center;
+  }
+  .sidebar .sidebar-image{
+    height: 50px;
+    padding: 3px;
+    display: block;
+    position: absolute;
+    top: 16px;
+    left: 16px;
+  }
+  .sidebar .sidebar-image img {
+    width: 44px;
+    height: 44px;
+  }
+  .sidebar .sidebar-image .user-data {
+    color: white;
+    font-size: 18px;
+    padding-top: 10px;
+    white-space: nowrap;
+  }
+  .sidebar .sidebar-image .icon-circle {
+    display: flex;
+    border: 2px solid white;
+    align-items: center;
+    flex: 1;
+    width: 54px;
+    height: 54px;
+    min-width: 54px;
+    min-height: 54px;
+    -webkit-box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.16), 0 2px 10px 0 rgba(0, 0, 0, 0.12);
+    -moz-box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.16), 0 2px 10px 0 rgba(0, 0, 0, 0.12);
+    box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.16), 0 2px 10px 0 rgba(0, 0, 0, 0.12);
+    border-radius: 100%;
+    background: $dark;
+    white-space: nowrap;
+    i{
+      align-items: center;
+      margin:0 auto;
+      color: white;
+      font-size: 36px;
+      display: flex;
+    }
+  }
+}

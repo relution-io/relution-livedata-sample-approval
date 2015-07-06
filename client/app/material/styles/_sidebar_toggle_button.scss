@@ -1,0 +1,12 @@
+.material-toggle-button{
+  overflow: hidden;
+  svg{
+    display: inline-block;
+    cursor: pointer;
+    background-repeat: no-repeat;
+    background-position: center center;
+    height: 32px;
+    width: 32px;
+    fill: $label;
+  }
+}

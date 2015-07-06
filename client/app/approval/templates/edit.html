@@ -1,0 +1,60 @@
+<ion-view>
+  <ion-nav-bar class="bar-light {{approvalEditC.state}}">
+    <ion-nav-back-button></ion-nav-back-button>
+    <ion-nav-title>
+      <h1 class="title {{approvalEditC.state}}">{{approvalEditC.state === 'rejected' ? 'REJECT': 'APPROVE' |
+        translate}}</h1>
+    </ion-nav-title>
+  </ion-nav-bar>
+  <form name="editApproval" ng-submit="approvalEditC.submit(editApproval.$valid)" novalidate>
+    <ion-content class="edit-list shadow-list" has-bouncing="false">
+      <ion-list class="shadow-list">
+      <span ng-if="approvalEditC.approval" class="approval-shadow">
+        <ion-item class="item-text-wrap item-icon-left">
+          <approval-icon state="approvalEditC.approval.state"
+                         object-type="approvalEditC.approval.header.objectType"></approval-icon>
+        <span class="row low">
+          <span class="col">
+            <span class="text-small" ng-if="approvalEditC.approval.approver[approvalEditC.approval.current || 0].receivedDate == 0">&nbsp;</span>
+            <span ng-if="approvalEditC.approval.approver[approvalEditC.approval.current || 0].receivedDate != 0" class="text-small time-ago" am-time-ago="approvalEditC.approval.approver[approvalEditC.approval.current || 0].receivedDate"></span>
+        </span>
+        </span>
+        <span class="row">
+          <span class="col-50">
+            <h2>
+              {{approvalEditC.approval.header.objectId}}
+            </h2>
+          </span>
+          <span class="col-50 item-note label">
+            {{approvalEditC.approval.header.totalValue|number:2}} {{approvalEditC.approval.header.currency}}
+          </span>
+        </span>
+        <span class="row">
+          <span class="col-100">
+            <p class="label"><span
+              ng-if="approvalEditC.approval.items.length > 0">{{approvalEditC.approval.items.length}} {{::'ITEMS'|translate}} |</span>
+              {{approvalEditC.approval.requester.name}}</p>
+          </span>
+        </span>
+        </ion-item>
+      </span>
+        <label class="item item-input">
+          <textarea ng-attr-id="{{'text-'+approvalEditC.approval.id}}" ng-maxlength="255"
+                    ng-model="approvalEditC.fields.comment" placeholder="{{'COMMENT' | translate}}"></textarea>
+        </label>
+      </ion-list>
+    </ion-content>
+    <ion-footer-bar>
+      <div class="button-bar">
+        <button type="submit" class="button button-assertive" ng-if="approvalEditC.state === 'rejected'"
+                ng-disabled="editApproval.$invalid">
+          {{'REJECT' | translate}}
+        </button>
+        <button type="submit" class="button button-balanced" ng-if="approvalEditC.state === 'approved'"
+                ng-disabled="editApproval.$invalid">
+          {{'APPROVE' | translate}}
+        </button>
+      </div>
+    </ion-footer-bar>
+  </form>
+</ion-view>

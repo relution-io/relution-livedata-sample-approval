@@ -1,0 +1,30 @@
+<ion-item class="item item-shadow item-icon-left user-item">
+  <i class="icon ion-person"></i>
+  <span class="text-small">&nbsp;</span>
+  <h2 class="positiv">{{approvalRequester.approval.requester.name}}</h2>
+  <p>{{approvalRequester.approval.header.companyCodeDescription}}</p>
+</ion-item>
+<ion-item ng-if="approvalRequester.approval.requester.phone">
+  <span class="row">
+    <span class="col-20 label">
+      {{'MOBILE'|translate}}
+    </span>
+    <span class="col-80 text-ellipsis">
+      <a href="tel:{{approvalRequester.approval.requester.phone}}">
+        {{approvalRequester.approval.requester.phone}}
+      </a>
+    </span>
+  </span>
+</ion-item>
+<ion-item ng-if="approvalRequester.approval.requester.email">
+  <span class="row">
+    <span class="col-20 label">
+      {{'EMAIL'|translate}}
+    </span>
+    <span class="col-80 text-ellipsis">
+      <a ng-href="mailto:{{approvalRequester.approval.requester.email}}">
+        {{approvalRequester.approval.requester.email}}
+      </a>
+    </span>
+  </span>
+</ion-item>

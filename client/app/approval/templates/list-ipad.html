@@ -1,0 +1,76 @@
+<ion-view hide-nav-bar="true" can-swipe-back="false" nav-transition="none">
+  <div ng-hide="approvalListC.search" class="bar bar-header search-approval-filter ">
+    <div class="buttons">
+      <button class="button button-icon button-clear ion-navicon" menu-toggle="left"></button>
+    </div>
+    <h1 class="title">
+      <button class="button button-clear" ng-click="approvalListC.scrollTop()">
+        <img
+          ng-style="{'max-height': '22px','margin-top': '10px'}"
+          ng-src="main/assets/images/logo@2x.png"
+          title="ibx"
+          />
+      </button>
+    </h1>
+    <div class="buttons">
+      <button class="button button-icon button-clear ion-ios-search" ng-click="approvalListC.switchToInput($event);"></button>
+    </div>
+    <div class="progress-bar" ng-if="!approvalListC.search">
+      <progress-bar in-progress="approvalListC.inProgress"></progress-bar>
+    </div>
+  </div>
+  <div ng-show="approvalListC.search"  class="bar bar-header search-approval-filter item-input-inset">
+    <label class="item-input-wrapper">
+      <i class="icon ion-ios7-search placeholder-icon"></i>
+      <input type="search" class="search-input" delayed-model="filter.value" data-delay="500" placeholder="Search" />
+    </label>
+    <button class="button button-clear" ng-click="approvalListC.switchToInput($event);">
+      <i class="icon ion-ios-close-empty"></i>
+    </button>
+  </div>
+  <div class="bar-subheader low bar bar-positive">
+    <p>
+      {{'SWIPE_DOWN_HELP'|translate}}
+    </p>
+  </div>
+  <ion-content overflow-scroll="{{approvalListC.overflowScroll}}" class="home-list has-subheader-low" delegate-handle="approval-list" has-bouncing="false">
+    <ion-refresher
+      pulling-text="Pull to refresh..."
+      on-refresh="approvalListC.sync()">
+    </ion-refresher>
+    <ion-list>
+      <ion-item
+        ng-repeat="approval in filtered = (approvalListC.approvals.rows | filter:filterBy) track by approval.attributes.id"
+        class="item-text-wrap item-icon-left"
+        ui-sref="ibx.approval.view({id: approval.attributes.id })"
+        >
+        <approval-icon state="approval.attributes.state"
+                       object-type="approval.attributes.header.objectType"></approval-icon>
+        <span class="row low">
+          <span class="col">
+            <span class="text-small" ng-if="approval.attributes.approver[approval.attributes.current || 0].receivedDate == 0">&nbsp;</span>
+            <span ng-if="approval.attributes.approver[approval.attributes.current || 0].receivedDate != 0" class="text-small time-ago" am-time-ago="approval.attributes.approver[approval.attributes.current || 0].receivedDate"></span>
+        </span>
+        </span>
+        <span class="row">
+          <span class="col-50">
+            <h2>
+              {{approval.attributes.header.objectId}}
+            </h2>
+          </span>
+          <span class="col-50 item-note label">
+            {{approval.attributes.header.totalValue|number:2}} {{approval.attributes.header.currency}}
+          </span>
+        </span>
+        <span class="row">
+          <span class="col-100">
+            <p class="label"><span
+              ng-if="approval.attributes.items.length > 0">{{approval.attributes.items.length}} {{::'ITEMS'|translate}} |</span>
+              {{approval.attributes.requester.name}}</p>
+          </span>
+        </span>
+      </ion-item>
+    </ion-list>
+    <div ng-if="approvalListC.approvals.rows.length < 1 || filtered.length < 1" ng-include="approvalListC.search ? 'approval/templates/empty-list-search.html':'approval/templates/empty-list.html'"></div>
+  </ion-content>
+</ion-view>

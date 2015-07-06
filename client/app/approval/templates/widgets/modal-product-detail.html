@@ -1,0 +1,169 @@
+<ion-modal-view>
+  <ion-header-bar class="bar-light">
+    <h1 class="title positive">
+      {{::'DETAIL'|translate}}
+    </h1>
+  </ion-header-bar>
+  <ion-content class="has-footer product-list-modal">
+    <ion-list class="row-nop-list">
+      <ion-item class="item-text-wrap no-ellipsis">
+        <h2>{{count}}. {{item.description}}</h2>
+        <span class="row">
+          <span class="col-33">
+          </span>
+          <span class="col-66 item-note text-positive text-right">
+            {{item.netValue|number:2}} {{item.currency}}
+          </span>
+        </span>
+      </ion-item>
+      <ion-item class="item item-divider ">
+        {{::'ITEM_DETAIL'|translate}}
+      </ion-item>
+      <ion-item ng-if="item.quantity">
+        <span class="row">
+          <span class="col-50">
+            {{::'QUANTITY'|translate}}
+          </span>
+          <span class="col-50 item-note text-right">
+            {{item.quantity}} {{item.unit}}
+          </span>
+        </span>
+      </ion-item>
+      <ion-item ng-if="item.price">
+        <span class="row">
+          <span class="col-50">
+          {{::'UNIT_PRICE'|translate}}
+          </span>
+          <span class="col-50 item-note text-right">
+            {{item.price|number:2}} {{item.currency}}
+          </span>
+        </span>
+      </ion-item>
+      <ion-item ng-if="item.priceUnit">
+        <span class="row">
+          <span class="col-50">
+          {{::'PER'|translate}}
+          </span>
+          <span class="col-50 text-right item-note">
+            {{item.priceUnit}} {{item.unit}}
+          </span>
+        </span>
+      </ion-item>
+      <ion-item ng-if="item.deliveryDate > 0">
+        <span class="row">
+          <span class="col-50">
+            {{::'REQUESTED_DELIVERY_DATE'|translate}}
+          </span>
+          <span class="col-50 text-right item-note">
+            {{item.deliveryDate|date}}
+          </span>
+        </span>
+      </ion-item>
+      <ion-item>
+        <span class="row">
+          <span class="col-50">
+            {{::'PRODUCT_ID'|translate}}
+          </span>
+          <span class="col-50 text-right item-note">
+            {{item.itemId}}
+          </span>
+        </span>
+      </ion-item>
+      <ion-item ng-if="item.vendorId || item.vendorName" class="item item-divider ">
+        {{::'SUPPLIER'|translate}}
+      </ion-item>
+      <ion-item ng-if="item.vendorId || item.vendorName">
+        <span class="row">
+          <span class="col-50">
+            {{item.vendorId}}
+          </span>
+          <span class="col-50 text-right item-note">
+            {{item.vendorName}}
+          </span>
+        </span>
+      </ion-item>
+      <ion-item ng-if="item.costObjects.length > 0" class="item item-divider ">
+        {{::'ACCOUNT'|translate}}
+      </ion-item>
+      <span ng-if="item.costObjects.length > 0" ng-repeat="costObject in item.costObjects track by $index">
+        <ion-item class="item item-divider" ng-if="$index > 0"></ion-item>
+      <ion-item>
+        <span class="row">
+          <span class="col-50">
+            {{::'ACCOUNT_SPLIT_POSITION'|translate}}
+          </span>
+          <span class="col-50 text-right item-note">
+            {{costObject.accountingNo}}
+          </span>
+        </span>
+      </ion-item>
+      <ion-item ng-if="costObject.distributionPercentage || costObject.distributionQuantity">
+        <span class="row">
+          <span class="col-50">
+            {{::'DISTRIBUTION'|translate}}
+          </span>
+          <span class="col-50 text-right item-note">
+            {{costObject.distributionPercentage ? costObject.distributionPercentage + '%' : costObject.distributionQuantity}}
+          </span>
+        </span>
+      </ion-item>
+      <ion-item ng-if="costObject.accountingObject">
+        <span class="row">
+          <span class="col-50">
+            {{::'ACC_CATEGORY'|translate}}
+          </span>
+          <span class="col-50 text-right item-note">
+            {{costObject.accountingObject}}
+          </span>
+        </span>
+      </ion-item>
+      <ion-item>
+        <span class="row">
+          <span class="col-50">
+            {{::'ACC_DESCRIPTION'|translate}}
+          </span>
+          <span class="col-50 text-right item-note">
+            {{costObject.accountingObjectDescription}}
+          </span>
+        </span>
+      </ion-item>
+      <ion-item>
+        <span class="row">
+          <span class="col-50">
+            {{::'COST_OBJECT'|translate}}
+          </span>
+          <span class="col-50 text-right item-note">
+            {{costObject.accountingValue}}
+          </span>
+        </span>
+      </ion-item>
+      </span>
+      <ion-item class="item item-divider " ng-if="item.goodsRecipient">
+        {{::'RECEIPIENT'|translate}}
+      </ion-item>
+      <ion-item ng-if="item.goodsRecipient">
+        {{item.goodsRecipient}}
+      </ion-item>
+      <ion-item class="item item-divider ">
+        {{::'SHIPPING'|translate}}
+      </ion-item>
+      <ion-item class="item-text-wrap">
+        <span class="row">
+          <span class="col-33">
+            {{::'ADDRESS'|translate}}
+          </span>
+          <span class="col-66 text-right item-note">
+            {{item.shipToAddress.street}} {{item.shipToAddress.houseNum1}}, {{item.shipToAddress.postCode1}} {{item.shipToAddress.region}} {{item.shipToAddress.countryName}}
+          </span>
+        </span>
+      </ion-item>
+    </ion-list>
+  </ion-content>
+  <ion-footer-bar>
+    <div class="button-bar">
+      <button class="button button-light button-positive" ng-click="closeModal()">
+        {{::'OK'|translate}}
+      </button>
+    </div>
+  </ion-footer-bar>
+</ion-modal-view>

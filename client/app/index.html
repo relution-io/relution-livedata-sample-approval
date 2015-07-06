@@ -1,0 +1,125 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="description" content="">
+  <meta name="viewport" content="width=device-width, initial-scale=1, minimal-ui">
+  <title>relutoinLiveData</title>
+  <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
+  <!-- build:css styles/vendor.css -->
+  <!-- bower:css -->
+  <link rel="stylesheet" href="bower_components/animate.css/animate.css" />
+  <link rel="stylesheet" href="bower_components/mprogress/mprogress.min.css" />
+  <!-- endbower -->
+  <!-- endbuild -->
+
+  <!-- build:css main/styles/main.css -->
+  <!-- inject:css -->
+  <link rel="stylesheet" href="main/styles/module.css">
+  <!-- endinject -->
+  <!-- endbuild -->
+</head>
+<body>
+<ion-nav-bar class="bar-calm">
+  <ion-nav-back-button>
+  </ion-nav-back-button>
+  <ion-nav-buttons side="secondary">
+    <relution-log-out-button></relution-log-out-button>
+  </ion-nav-buttons>
+</ion-nav-bar>
+<!--
+  The views will be rendered in the <ion-nav-view> directive below
+  Templates are in the /templates folder (but you could also
+  have templates inline in this html file if you'd like).
+-->
+<ion-nav-view></ion-nav-view>
+
+<script src="cordova.js"></script>
+<!-- will be a 404 during development -->
+<!-- build:js scripts/vendor.js -->
+<script src="bower_components/socket.io-client/dist/socket.io.js"></script>
+<!-- bower:js -->
+<script src="bower_components/jquery/dist/jquery.js"></script>
+<script src="bower_components/angular/angular.js"></script>
+<script src="bower_components/angular-animate/angular-animate.js"></script>
+<script src="bower_components/angular-sanitize/angular-sanitize.js"></script>
+<script src="bower_components/angular-ui-router/release/angular-ui-router.js"></script>
+<script src="bower_components/ionic/release/js/ionic.js"></script>
+<script src="bower_components/ionic/release/js/ionic-angular.js"></script>
+<script src="bower_components/ngCordova/dist/ng-cordova.js"></script>
+<script src="bower_components/angular-deferred-bootstrap/angular-deferred-bootstrap.js"></script>
+<script src="bower_components/angular-translate/angular-translate.js"></script>
+<script src="bower_components/angular-translate-loader-static-files/angular-translate-loader-static-files.js"></script>
+<script src="bower_components/underscore/underscore.js"></script>
+<script src="bower_components/backbone/backbone.js"></script>
+<script src="bower_components/q/q.js"></script>
+<script src="bower_components/momentjs/moment.js"></script>
+<script src="bower_components/JSONPath/lib/jsonpath.js"></script>
+<script src="bower_components/bikini/dist/bikini.js"></script>
+<script src="bower_components/bikini/dist/bikangular.js"></script>
+<script src="bower_components/angular-cookies/angular-cookies.js"></script>
+<script src="bower_components/localforage/dist/localforage.js"></script>
+<script src="bower_components/angular-localForage/dist/angular-localForage.js"></script>
+<script src="bower_components/relution-client-security/dist/relution-client-security.js"></script>
+<script src="bower_components/relution-client-security/dist/templates.js"></script>
+<script src="bower_components/moment/moment.js"></script>
+<script src="bower_components/angular-moment/angular-moment.js"></script>
+<script src="bower_components/mprogress/mprogress.min.js"></script>
+<script src="bower_components/Snap.svg/dist/snap.svg-min.js"></script>
+<!-- endbower -->
+<!-- endbuild -->
+
+<!-- build:js scripts/app.js -->
+<!-- inject:js -->
+<script src="translation/translation.js"></script>
+<script src="translation/services/translate-serv.js"></script>
+<script src="translation/directives/translation-select-item-dir.js"></script>
+<script src="settings/settings.js"></script>
+<script src="settings/controllers/settings-ctrl.js"></script>
+<script src="push/push.js"></script>
+<script src="push/services/push-serv.js"></script>
+<script src="push/services/push-ios-serv.js"></script>
+<script src="push/services/push-android-serv.js"></script>
+<script src="network/service/network-serv.js"></script>
+<script src="material/material.js"></script>
+<script src="material/directives/material-sidebar-user-header-dir.js"></script>
+<script src="material/directives/material-sidebar-toggle-dir.js"></script>
+<script src="material/directives/material-sidebar-list-dir.js"></script>
+<script src="material/directives/material-sidebar-dir.js"></script>
+<script src="main/main.js"></script>
+<script src="main/services/start-serv.js"></script>
+<script src="main/services/relution-fact.js"></script>
+<script src="main/services/alert-serv.js"></script>
+<script src="main/filters/money_formatter-fil.js"></script>
+<script src="main/directives/side-menu-item-dir.js"></script>
+<script src="main/directives/progress-dir.js"></script>
+<script src="main/directives/preload-dir.js"></script>
+<script src="main/directives/hour-glass-loader-dir.js"></script>
+<script src="main/directives/approval-icon-dir.js"></script>
+<script src="main/controllers/start-ctrl.js"></script>
+<script src="main/constants/config-const.js"></script>
+<script src="libs/libs.js"></script>
+<script src="libs/services/moment-serv.js"></script>
+<script src="libs/factories/moment-fact.js"></script>
+<script src="libs/backbone-sorting.js"></script>
+<script src="bootstrap.js"></script>
+<script src="auth/auth.js"></script>
+<script src="auth/controllers/login-ctrl.js"></script>
+<script src="approval/approval.js"></script>
+<script src="approval/services/server-url-serv.js"></script>
+<script src="approval/services/approvals-serv.js"></script>
+<script src="approval/directives/view-footer-bar-dir.js"></script>
+<script src="approval/directives/approval-view-requester-item-dir.js"></script>
+<script src="approval/directives/approval-view-product-item-dir.js"></script>
+<script src="approval/directives/approval-view-information-dir.js"></script>
+<script src="approval/controllers/approval-view-ctrl.js"></script>
+<script src="approval/controllers/approval-list-ctrl.js"></script>
+<script src="approval/controllers/approval-edit-ctrl.js"></script>
+<script src="approval/controllers/approval-ctrl.js"></script>
+<script src="app.js"></script>
+<script src="about/about.js"></script>
+<script src="about/controllers/about-ctrl.js"></script>
+<!-- endinject -->
+<!-- endbuild -->
+</body>
+</html>

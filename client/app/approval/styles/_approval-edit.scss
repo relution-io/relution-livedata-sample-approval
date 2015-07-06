@@ -1,0 +1,41 @@
+.bar {
+  &.bar-light {
+    .title {
+      &.rejected {
+        color: $assertive;
+      }
+      &.approved {
+        color: $balanced;
+      }
+    }
+  }
+  &.rejected {
+    .ion, .icon, .back-text {
+      color: $assertive;
+    }
+  }
+  &.approved {
+    .ion, .icon, .back-text {
+      color: $balanced;
+    }
+  }
+}
+.edit-list {
+  .item-input{
+    margin-top: -9px;
+  }
+  textarea {
+    min-height: 150px;
+    height: 100%;
+  }
+}
+.item-input{
+  textarea{
+    $placeholders: ":-webkit-input" ":-moz" "-moz" "-ms-input";
+    @each $placeholder in $placeholders {
+      &:#{$placeholder}-placeholder {
+        padding-left: 5px;
+      }
+    }
+  }
+}

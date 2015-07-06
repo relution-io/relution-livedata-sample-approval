@@ -1,0 +1,45 @@
+<div class="card">
+    <ion-item class="item item-divider {{approver.status}}">
+      {{approver.type}}
+    </ion-item>
+    <ion-item>
+      <span class="row">
+        <span class="col-33">
+        {{::'APPROVER_STATUS'|translate}}
+        </span>
+        <span class="col-66 item-note">
+        {{approver.status}}
+        </span>
+      </span>
+    </ion-item>
+    <ion-item ng-if="approver.names.length > 0" ng-repeat="appr in approver.names track by $index">
+      <span class="row">
+        <span class="col-50">
+          {{appr}}
+        </span>
+        <span class="col-50 item-note">
+          {{approver.ids[$index]}}
+        </span>
+      </span>
+    </ion-item>
+    <ion-item class="item" ng-if="approver.receivedDate !== 0">
+      <span class="row">
+        <span class="col-50">
+        {{::'RECEIVED_ON'|translate}}
+      </span>
+        <span class="col-50 item-note">
+          {{approver.receivedDate|date}}
+        </span>
+      </span>
+    </ion-item>
+  <ion-item ng-if="approver.processedDate !== 0">
+    <span class="row">
+      <span class="col-50">
+        {{::'PROCESSED_ON'|translate}}
+      </span>
+      <span class="col-50 item-note">
+          {{approver.processedDate|date}}
+      </span>
+    </span>
+  </ion-item>
+</div>

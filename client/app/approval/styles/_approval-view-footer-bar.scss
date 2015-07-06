@@ -1,0 +1,27 @@
+.rejected-footer{
+  .list{
+    position: absolute;
+    top: -5px;
+    border: none;
+    width:100%;
+    .item{
+      border: none;
+    }
+  }
+  h3{
+    font-size: 16px;
+  }
+}
+
+.view{
+  .bar.bar-footer{
+    padding: 0;
+    .button-bar{
+      .button{
+        border-radius: 0 0 0 0;
+        min-height: $bar-height;
+        line-height: $bar-height;
+      }
+    }
+  }
+}

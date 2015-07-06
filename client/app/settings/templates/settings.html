@@ -1,0 +1,35 @@
+<ion-view hide-back-button="true" can-swipe-back="false" nav-transition="none" hide-nav-bar="true">
+  <ion-content class="">
+    <div class="bar bar-header bar-light">
+      <button side="primary" class="button button-icon button-clear ion-navicon" menu-toggle="left"></button>
+      <h1 class="title text-positive">{{'SETTINGS'|translate}}</h1>
+    </div>
+    <div class="list has-header">
+      <ion-item class="item item-divider">
+        {{'ACCOUNT'|translate}}
+      </ion-item>
+      <ion-item>
+        <span class="row">
+          <span class="col-50">{{'SERVER'|translate}}</span>
+          <span class="col-50 text-right text-ellipsis">{{settingsC.server}}</span>
+        </span>
+      </ion-item>
+      <ion-item>
+        <span class="row">
+          <span class="col-50">{{'LOGIN_FORM_FIELD_USER_ID'|translate}}</span>
+          <span class="col-50 text-right text-ellipsis">{{settingsC.name}}</span>
+        </span>
+      </ion-item>
+      <ion-item>
+        <span class="row">
+          <span class="col-50">{{'LOGIN_FORM_FIELD_TENANT'|translate}}</span>
+          <span class="col-50 text-right text-ellipsis">{{settingsC.tenant}}</span>
+        </span>
+      </ion-item>
+      <ion-item class="item item-divider">
+        {{'COMMON'|translate}}
+      </ion-item>
+      <translation-select-item></translation-select-item>
+    </div>
+  </ion-content>
+</ion-view>

@@ -1,0 +1,92 @@
+.claim{
+  font-size: 12px;
+  white-space: nowrap;
+}
+.row{
+  &.low{
+    padding: 0;
+  }
+}
+.item{
+  .approval-open{
+    color: $label;
+  }
+  .approval-rejected{
+    color: $assertive;
+  }
+  .approval-approved{
+    color: $balanced;
+  }
+  &.progress-item{
+    margin: 0 !important;
+    line-height: 5px;
+    border: none;
+    padding: 0!important;
+  }
+}
+.item-divider{
+  //@extend .item-light;
+  &.APPROVED{
+    @extend .item-balanced;
+  }
+  &.REJECTED{
+    @extend .item-assertive;
+  }
+}
+.information-item, .user-item{
+  height: 90px !important;
+  h2{
+    font-weight: 600;
+    padding-top: 6px;
+  }
+}
+.slide-item{
+  .item{
+    height: 90px !important;
+  }
+}
+.empty-screen{
+  width: 100%;
+  fill: $label;
+  background: white;
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  @include position(relative, 0 0 0 0);
+  svg{
+    margin: 0 auto;
+    flex: 1;
+    min-width: 60%;
+    height: 180px;
+    width: 180px;
+    display: block;
+    vertical-align: middle;
+    fill: $dark;
+  }
+  p.text-center{
+    flex: 100%;
+    padding: 20px 20px;
+    color: $dark;
+    font-size: 16px;
+  }
+}
+.item-text-wrap{
+  &.no-ellipsis{
+    h2{
+      white-space: normal !important;
+    }
+  }
+}
+.product-item{
+  .row{
+    padding-left: 0;
+  }
+}
+.approval-shadow {
+
+}
+.row-nop-list{
+  .row{
+    padding: 0;
+  }
+}

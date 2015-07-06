@@ -1,0 +1,36 @@
+<ion-side-menus enable-menu-with-back-views="true" delegate-handle="app-side-menu">
+  <!-- Center content -->
+  <ion-side-menu-content>
+    <ion-nav-bar class="bar-light">
+      <ion-nav-back-button>
+      </ion-nav-back-button>
+      <ion-nav-title>
+        <img ng-style="{'max-height': '22px','margin-top': '10px'}" ng-src="main/assets/images/logo@2x.png"
+             title="ibx"/>
+      </ion-nav-title>
+      <ion-nav-buttons side="left">
+        <button class="button button-icon button-clear ion-navicon" menu-toggle="left"></button>
+      </ion-nav-buttons>
+    </ion-nav-bar>
+    <ion-nav-view name="approval"></ion-nav-view>
+  </ion-side-menu-content>
+  <!-- Left menu -->
+  <ion-side-menu side="left" class="side-menu" ng-controller="ApprovalCtrl as approvalC">
+    <div class="sidebar-header header-cover" style="background-image: url('material/assets/images/bg_ibx_slide.png') ">
+      <!-- Sidebar brand image -->
+      <div class="sidebar-image">
+        <div class="icon-circle">
+          <i class="icon ion-person"></i>
+        </div>
+        <div class="user-data">{{approvalC.user.relutionUserFirstname}} {{approvalC.user.relutionUserLastname}}</div>
+      </div>
+    </div>
+    <ion-list>
+      <side-menu-item links="approvalC.sideBarLinks"></side-menu-item>
+    </ion-list>
+    <ion-footer-bar class="transparent dark">
+      <p class="col text-center claim">powered by M-Way Solutions GmbH v{{$root.appVersion}}</p>
+    </ion-footer-bar>
+  </ion-side-menu>
+</ion-side-menus>
+

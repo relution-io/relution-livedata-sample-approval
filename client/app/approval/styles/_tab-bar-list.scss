@@ -1,0 +1,182 @@
+.tab-bar-list-wrapper, .tab-bar-view-wrapper {
+  padding: 0 !important;
+  height: 34px;
+  overflow: hidden;
+  button{
+    line-height: 24px !important;
+    min-height: 24px !important;
+  }
+
+}
+
+.progress-bar{
+  line-height: 5px;
+  background: white;
+}
+.item-text-wrap p{
+  font-size: 14px;
+}
+.progress-bar{
+  position: absolute;
+  bottom: -2px;
+  left: 0;
+  right: 0;
+  height: 5px;
+}
+.tab-bar-list, .tab-bar-view {
+  padding: 0 !important;
+  height: $bar-height;
+  .button {
+    font-size: 14px;
+    border-color: transparent !important;
+    //overflow: auto !important;
+    //min-height: 32px;
+    //line-height: 32px;
+    &:last-child {
+      top: 0 !important;
+      bottom: 0 !important;
+      right: 0 !important;
+    }
+    //&:after {
+    //  width: 0;
+    //  height: 0;
+    //  margin: 0 auto;
+    //  padding-top: $bar-height;
+    //  border-left: 20px solid transparent;
+    //  border-right: 20px solid transparent;
+    //  border-top: 20px solid $ibx;
+    //}
+  }
+
+  .button-active {
+    background-color: $ibx;
+  }
+  span.tab-title {
+    color: white;
+  }
+}
+
+.tab-bar-view{
+  height: 34px;
+}
+.home-list {
+  top: $bar-height;
+}
+
+.text-positive {
+  color: $positive !important;
+}
+.item-note {
+  overflow: hidden;
+  font-size: 14px;
+  color: $dark;
+  text-align: right !important;
+  font-weight: 400;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  &.positive{
+    color: $positive;
+  }
+}
+.home-list, .view-list {
+  background: white !important;
+  .item-content {
+    padding-right: $item-padding;
+  }
+
+  p.label{
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    width: 100%;
+    overflow: hidden;
+  }
+  h2.positive{
+    color: $positive;
+  }
+  .p10{
+    padding-top: 5px;
+  }
+}
+
+$shadow-color: 0;
+$shadow-strong: 9px;
+.view-list {
+  .product-list {
+    .first {
+      .item {
+        z-index: $z-index-item;
+        margin-top: -$shadow-strong;
+        border-top: none;
+      }
+    }
+  }
+}
+
+.approval-shadow {
+  .item {
+    z-index: $z-index-item +1;
+    margin-bottom: $shadow-strong;
+    @include boxShadowHelper(2, $shadow-color);
+  }
+}
+
+.shadow-list {
+  .list {
+    :nth-child(1) {
+      .item:nth-child(2) {
+        z-index: $z-index-item;
+        border-top: none;
+        margin-top: -$shadow-strong;
+      }
+    }
+  }
+  .label {
+    //text-align: right;
+    padding-right: 10px;
+    color: $label;
+  }
+  a {
+    color: $link;
+    text-decoration: none;
+    &:focus, &:hover {
+      outline: none;
+    }
+  }
+}
+.item-complex.item-icon-left .item-content {
+  padding-top: 5px;
+}
+.item-shadow {
+  padding-top: 0;
+  margin-bottom: $shadow-strong;
+  min-height: 70px;
+  z-index: $z-index-item + 1;
+  @include boxShadowHelper(2, $shadow-color);
+  h2{
+    padding-top: 3px;
+  }
+}
+
+.scroll-content {
+  background-color: $stable;
+}
+
+.item-text-wrap h1, .item-text-wrap h2, .item-text-wrap h3, .item-text-wrap h4, .item-text-wrap h5, .item-text-wrap h6{
+  font-weight: 600;
+}
+.item h2 {
+  color: $dark;
+  font-size: 15px;
+  text-overflow: ellipsis;
+  overflow: hidden !important;
+  width: 100%;
+  white-space: nowrap !important;
+}
+.time-ago{
+  font-size: 12px;
+  color: $label;
+}
+.text-ellipsis{
+  text-overflow: ellipsis;
+  overflow: hidden;
+}

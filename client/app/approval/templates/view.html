@@ -1,0 +1,98 @@
+<ion-view view-title="{{'DETAIL'|translate}}" class="view">
+  <ion-nav-bar class="bar-light">
+    <ion-nav-back-button>
+    </ion-nav-back-button>
+  </ion-nav-bar>
+  <ion-content class="view-list" overflow-scroll="true" has-bouncing="false"
+               ng-class="{'has-footer': approvalViewC.approval.state == 'open' || approvalViewC.approval.state == 'rejected'}">
+    <div class="bar-dark bar-subheader tab-bar-view-wrapper">
+      <div class="button-bar tab-bar-view" id="{{approvalViewC.approval.id}}">
+        <button ng-click="approvalViewC.slide($event, 0)" class="button button-active"
+                title="{{::'TAB_PRODUCTS_APPROVALDETAIL'|translate}}">
+          {{::'TAB_PRODUCTS_APPROVALDETAIL'|translate}}
+        </button>
+        <button ng-click="approvalViewC.slide($event, 1)" class="button"
+                title="{{::'TAB_REQUESTER_APPROVALDETAIL'|translate}}">
+          {{::'TAB_REQUESTER_APPROVALDETAIL'|translate}}
+        </button>
+        <button ng-click="approvalViewC.slide($event, 2)" class="button"
+                title="{{::'TAB_INFORMATIONS_APPROVALDETAIL'|translate}}">
+          {{::'TAB_INFORMATIONS_APPROVALDETAIL'|translate}}
+        </button>
+      </div>
+    </div>
+    <ion-slide-box show-pager="false" on-slide-changed="approvalViewC.slideHasChanged($index)"
+                   delegate-handle="approval-view-slider">
+      <ion-slide>
+        <ion-scroll direction="y" style="height: {{approvalViewC.getScrollHeight(['subHeader', 'footer'])}}">
+          <ion-list class="product-list row-nop-list view-list">
+            <span class="approval-shadow slide-item">
+            <ion-item class="item-text-wrap item-icon-left item-shadow">
+              <approval-icon state="approvalViewC.approval.state"
+                             object-type="approvalViewC.approval.header.objectType"></approval-icon>
+                <span class="row low">
+          <span class="col">
+            <span class="text-small" ng-if="approvalViewC.approval.approver[approvalViewC.approval.current || 0].receivedDate == 0">&nbsp;</span>
+            <span ng-if="approvalViewC.approval.approver[approvalViewC.approval.current || 0].receivedDate != 0" class="text-small time-ago" am-time-ago="approvalViewC.approval.approver[approvalViewC.approval.current || 0].receivedDate"></span>
+        </span>
+        </span>
+        <span class="row">
+          <span class="col-50">
+            <h2>
+              {{approvalViewC.approval.header.objectId}}
+            </h2>
+          </span>
+          <span class="col-50 item-note label">
+            {{approvalViewC.approval.header.totalValue|number:2}} {{approvalViewC.approval.header.currency}}
+          </span>
+        </span>
+                <span class="row">
+                  <span class="col-100 p10">
+                    <p class="label"><span
+                      ng-if="approvalViewC.approval.items.length > 0">{{approvalViewC.approval.items.length}} {{::'ITEMS'|translate}} |</span>
+                      {{approvalViewC.approval.requester.name}}</p>
+                  </span>
+                </span>
+            </ion-item>
+            </span>
+            <approval-view-product-item
+              ng-class="{'first': $index == 0}" count="$index  + 1" item="item"
+              class="product-item"
+              ng-repeat="item in approvalViewC.approval.items track by $index">
+            </approval-view-product-item>
+          </ion-list>
+        </ion-scroll>
+      </ion-slide>
+      <ion-slide>
+        <ion-scroll direction="y" style="height: {{approvalViewC.getScrollHeight(['subHeader', 'footer'])}}">
+          <ion-list class="shadow-list row-nop-list">
+            <approval-view-requester-item
+              approval="approvalViewC.approval">
+            </approval-view-requester-item>
+          </ion-list>
+        </ion-scroll>
+      </ion-slide>
+      <ion-slide>
+        <ion-scroll direction="y" style="height: {{approvalViewC.getScrollHeight(['subHeader', 'footer'])}}">
+          <ion-list class="row-nop-list">
+            <ion-item class="item item-shadow information-item item-text-wrap item-icon-left">
+              <i class="icon ion-chatboxes"></i>
+              <span class="text-small">&nbsp;</span>
+              <h2>{{'MESSAGE_TO_APPROVER'|translate}}</h2>
+
+              <p>
+                {{approvalViewC.approval.header.approvalMessage ? approvalViewC.approval.header.approvalMessage : 'na'}}
+              </p>
+            </ion-item>
+            <ion-item class="item item-divider item-positive" ng-style="{'margin-top': '-9px'}">
+              {{'APPORVAL_PREVIEW'|translate}}
+            </ion-item>
+            <approval-view-information ng-repeat="approver in approvalViewC.approval.approver track by $index"
+                                       index="$index" approver="approver"></approval-view-information>
+          </ion-list>
+        </ion-scroll>
+      </ion-slide>
+    </ion-slide-box>
+  </ion-content>
+  <approval-view-footer-bar class="bar bar-footer" item="approvalViewC.approval"></approval-view-footer-bar>
+</ion-view>

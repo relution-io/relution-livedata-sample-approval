@@ -1,0 +1,8 @@
+{
+  "name": "livedata-approval-sample",
+  "baseAlias": "/livedata-approval-sample",
+  "uuid": "42056b06-7fc3-4cbe-9aa2-ae151f1418ce",
+  "server": "./server/app.js",
+  "client": "./client/www/",
+  "directoryIndex": true
+}

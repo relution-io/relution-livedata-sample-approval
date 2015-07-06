@@ -1,0 +1,6 @@
+<ion-list class="side-menu">
+  <ion-item ng-repeat="link in links track by $index" class="" ui-sref="{{link.state}}" ng-class="$index === isActive ? 'active' : 'non-active'">
+    <i class="sidebar-icon " ng-class="$index === isActive ? link.iconOn : link.iconOff"></i>
+    {{link.translate|translate}}
+  </ion-item>
+</ion-list>
