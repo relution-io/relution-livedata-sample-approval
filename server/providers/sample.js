@@ -27,8 +27,6 @@
 // datasync setup
 var backbone = require('backbone');
 var datasync = require('mcap/datasync.js');
-var bson = require('bson');
-var BSON = bson.BSONPure.BSON;
 
 var options = {
 	entity: 'approvals',

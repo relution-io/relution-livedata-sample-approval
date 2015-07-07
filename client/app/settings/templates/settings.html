@@ -26,7 +26,7 @@
           <span class="col-50 text-right text-ellipsis">{{settingsC.user.email}}</span>
         </span>
       </ion-item>
-      <ion-item ng-if="settingsC.user.country" class="{{settingsC.user.country|lowercase}}">
+      <ion-item ng-if="settingsC.user.country" class="item {{settingsC.user.country|lowercase}}">
         <span class="row">
           <span class="col-50">{{'COUNTRY'|translate}}</span>
           <span class="col-50 text-right text-ellipsis">{{settingsC.user.country}}</span>

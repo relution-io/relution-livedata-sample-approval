@@ -27,6 +27,12 @@
     </div>
     <ion-list>
       <side-menu-item links="approvalC.sideBarLinks"></side-menu-item>
+      <ion-item ng-click="approvalC.logout()">
+        <button class="button-icon button ">
+          <i class="icon {{approvalC.config.iconSet.logout}}"></i>
+          {{'LOGOUT'|translate}}
+        </button>
+      </ion-item>
     </ion-list>
     <ion-footer-bar class="transparent dark">
       <p class="col text-center claim">powered by M-Way Solutions GmbH v{{$root.appVersion}}</p>

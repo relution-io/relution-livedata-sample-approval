@@ -143,6 +143,7 @@ angular.module('approval')
     });
 
     $rootScope.$on('$translateChangeSuccess', function () {
+      console.log('bhsadgash');
       $rootScope.$broadcast('amMoment:localeChanged');
     });
   })

@@ -35,7 +35,7 @@
   "TAB_REQUESTER_APPROVALDETAIL": "Anforderer",
   "APPROVALS": "Anträge",
   "ACCOUNT": "KONTO",
-  "LOGOUT": "Ausloggen:",
+  "LOGOUT": "ausloggen",
   "PIECE": "Stück",
   "OPTIONAL_COMMENT": "Optionaler Kommentar",
   "SEND": "Senden",
@@ -100,5 +100,7 @@
   "SWIPE_DOWN_HELP": "Alle Genehmigungsanträge (zum Aktualisieren herunterziehen)",
   "IMPRINT_CONCEPT": "Konzeption",
   "IMPRINT_DESIGN_CODE": "Gestaltung, Programmierung",
-  "IMPRINT_STATUS": "Mai 2015"
+  "IMPRINT_STATUS": "Mai 2015",
+  "COUNTRY": "Land",
+  "USER_ID": "Benutzername"
 }

@@ -46,7 +46,7 @@ module.exports = function approvals(app) {
 	var errorStatus = function errorStatus(status, req, res) {
 		res.send(status);
 	};
-	app.put('/approvals/:id', errorStatus.bind(undefined, 405)); // no update
+	//app.put('/approvals/:id', errorStatus.bind(undefined, 405)); // no update
 	app.patch('/approvals/:id', function filterPatch(req, res, next) {
 		if(req.body.state) {
 			next('route'); // acceptable patch request targeting the state and comment field only

@@ -46,10 +46,12 @@ angular.module('libs')
     this.setLanguage = function () {
       //console.log('changeLocal');
       amMoment.changeLocale(self.getLanguagePrefix());
+      debugger;
       $rootScope.$broadcast('amMoment:localeChanged');
     };
 
     $rootScope.$on('$translateChangeSuccess', function () {
+      console.log('translation changed momentservice');
       self.setLanguage();
     });
   });

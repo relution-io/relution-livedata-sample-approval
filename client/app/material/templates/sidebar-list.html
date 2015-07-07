@@ -3,4 +3,10 @@
     <i class="sidebar-icon " ng-class="$index === isActive ? link.iconOn : link.iconOff"></i>
     {{link.translate|translate}}
   </ion-item>
+  <ion-item ng-click="approvalC.logout()">
+    <button class="button-icon button ">
+      <i class="sidebar-icon icon {{approvalC.config.icons.logout}}"></i>
+      {{'LOGOUT'|translate}}
+    </button>
+  </ion-item>
 </ion-list>

@@ -98,7 +98,7 @@ angular.module('relutionLiveData', [
     $ionicConfigProvider.navBar.positionPrimaryButtons('left');
     $ionicConfigProvider.navBar.positionSecondaryButtons('right');
   })
-  .run(function ($cordovaSplashscreen, $window, $translate, $cordovaGlobalization, $cordovaAppVersion, $rootScope, Config, NetworkService, MomentService) {
+  .run(function ($cordovaSplashscreen, $window, $translate, $state, $cordovaGlobalization, $cordovaAppVersion, $rootScope, Config, NetworkService, MomentService) {
     if ($window.cordova) {
       $cordovaAppVersion.getAppVersion().then(function (version) {
         $rootScope.appVersion = version;
@@ -126,5 +126,6 @@ angular.module('relutionLiveData', [
         console.log(error); // "lazy.state"
         console.log(fromState); // {inherit:false} + default options
         console.log(fromParams); // {inherit:false} + default options
+        $state.go('mway.login');
       });
   });

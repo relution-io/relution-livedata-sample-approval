@@ -99,5 +99,8 @@
   "SWIPE_DOWN_HELP": "All request for approval (swipe down to refresh)",
   "IMPRINT_CONCEPT" : "Conception",
   "IMPRINT_DESIGN_CODE" : "Design, programming",
-  "IMPRINT_STATUS" : "May 2015"
+  "IMPRINT_STATUS" : "May 2015",
+  "LOGOUT": "logout",
+  "COUNTRY": "Country",
+  "USER_ID": "User id"
 }
