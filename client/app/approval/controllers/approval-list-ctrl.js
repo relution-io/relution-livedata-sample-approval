@@ -6,7 +6,7 @@
  * @description add your description
  */
 angular.module('approval')
-  .controller('ApprovalListCtrl', function ApprovalListCtrl($scope, $q, $filter, $timeout, $ionicScrollDelegate, $ionicLoading, $window, MomentService, $rootScope, PushService, ApprovalsService) {
+  .controller('ApprovalListCtrl', function ApprovalListCtrl($scope, $q, $filter, $timeout, $state, $ionicScrollDelegate, $ionicLoading, $window, MomentService, $rootScope, PushService, ApprovalsService) {
     this.available = true;
     this.inProgress = false;
     this.overflowScroll = ionic.Platform.isAndroid();
@@ -107,6 +107,10 @@ angular.module('approval')
           document.querySelector('.search-input').focus();
         }, 150);
       }
+    };
+
+    this.goEdit = function (id, state) {
+      return $state.go('mway.approval.edit', {id: id, state: state});
     };
     /**
      * @ngdoc method

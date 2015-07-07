@@ -38,7 +38,7 @@
       pulling-text="Pull to refresh..."
       on-refresh="approvalListC.sync()">
     </ion-refresher>
-    <ion-list>
+    <ion-list can-swipe="true">
       <ion-item
         collection-repeat="approval in filtered = (approvalListC.approvals.rows | filter:filterBy) track by approval.attributes.id"
         item-width="'100%'"
@@ -71,6 +71,8 @@
               {{approval.attributes.requester.name}}</p>
           </span>
         </span>
+        <ion-option-button ng-click="approvalListC.goEdit(approval.attributes.id, 'approved')" class="button-balanced">{{::'APPROVE' | translate}}</ion-option-button>
+        <ion-option-button ng-click="approvalListC.goEdit(approval.attributes.id, 'rejected')" class="button-assertive">{{::'REJECT' | translate}}</ion-option-button>
       </ion-item>
     </ion-list>
     <div ng-if="approvalListC.approvals.rows.length < 1 || filtered.length < 1" ng-include="approvalListC.search ? 'approval/templates/empty-list-search.html':'approval/templates/empty-list.html'"></div>
