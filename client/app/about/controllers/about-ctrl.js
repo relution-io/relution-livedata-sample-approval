@@ -27,9 +27,10 @@
  * @description add your description
  */
 angular.module('about')
-  .controller('AboutCtrl', function AboutCtrl($scope, $window, $rootScope, $cordovaAppVersion, $ionicLoading, Config) {
+  .controller('AboutCtrl', function AboutCtrl($scope, $window, $rootScope, $cordovaAppVersion, $ionicLoading, Config, HeaderService) {
     var self = this;
     this.bowerPackages = Config.BOWER_DEPENDENCIES;
+    this.header = HeaderService;
     this.browser = function (url) {
 
       $window.webview.openWebView(

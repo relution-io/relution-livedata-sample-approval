@@ -13,7 +13,7 @@
     "animate.css": "~3.3.0",
     "angular-cookies": "~1.4.1",
     "angular-localForage": "~1.2.2",
-    "relution-client-security": "~1.0.0",
+    "relution-client-security": "~1.1.0",
     "moment": "~2.10.2",
     "angular-moment": "https://github.com/DrMabuse23/angular-moment.git#5a42be8bdf91975b6c471faac4f95297c65810b5",
     "mprogress": "~0.1.1",

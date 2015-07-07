@@ -7,6 +7,11 @@
   .button.button-dark.button-icon {
     border-color: $light !important;
     background: $calm !important;
+    display: flex;
+    align-items: center;
+    &:before{
+      padding-right: 20px;
+    }
   }
 }
 .login-loader{
