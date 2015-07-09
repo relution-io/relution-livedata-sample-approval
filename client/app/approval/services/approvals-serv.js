@@ -9,6 +9,11 @@ angular.module('approval')
     var self = this;
     this.pendings = [];
     this.init = true;
+    this.counter = 10;
+    this.entriesOptions = {
+      limit: ionic.Platform.isIPad() ? 50 : 10,
+      sortOrder: [ '-approver[0].receivedDate', '-id' ]
+    };
     /**
      * @ngdoc property
      * @name channel
@@ -195,7 +200,7 @@ angular.module('approval')
     this.resetCollection = function () {
       var lastMesgTime = self.store.getLastMessageTime();
       self.store.setLastMessageTime(self.entries.channel, '');
-      return self.fetchCollection(true).finally(function () {
+      return self.fetchCollection(self.entriesOptions).finally(function () {
         $rootScope.$applyAsync();
         self.store.setLastMessageTime(self.entries.channel, lastMesgTime);
       });
@@ -225,14 +230,18 @@ angular.module('approval')
         self.setEntries();
       }
       if (self.init || explicit) {
-        var promise = $q(function (resolve) {
-          resolve(self.entries.fetch());
+        return self.entries.fetch(self.entriesOptions).then(function (res) {
+          return res;
         });
-        return promise.then(function () {
-          self.init = false;
-          self.entries.setSorting({by: 'approver[current || 0].receivedDate', type: 'date', direction: 'descending'});
-          return self.entries;
-        });
+        //var promise = $q(function (resolve) {
+        //  resolve();
+        //});
+        //
+        //return promise.then(function (res) {
+        //
+        //  self.init = false;
+        //  return self.entries;
+        //});
       }
     };
   });

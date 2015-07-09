@@ -10,6 +10,8 @@ angular.module('approval')
     this.available = true;
     this.inProgress = false;
     this.overflowScroll = ionic.Platform.isAndroid();
+    this.noMoreItemsAvailable = false;
+    this.moreOptions = {};
     $scope.filter = {
       value: ''
     };
@@ -74,8 +76,11 @@ angular.module('approval')
     this.sync = function () {
       self.inProgress = true;
       $scope.$broadcast('scroll.refreshComplete');
+      ApprovalsService.init = true;
+      self.noMoreItemsAvailable = false;
       var queue = [ApprovalsService.resetCollection()];
       $q.all(queue).then(function () {
+        ApprovalsService.init = false;
         //self.approvals.rows = $filter('orderBy')(ApprovalsService.entries.models, '-attributes.approver[attributes.current || 0].receivedDate');
         self.approvals.rows = ApprovalsService.entries.models;
         self.inProgress = false;
@@ -123,13 +128,6 @@ angular.module('approval')
     });
     $scope.$on('$ionicView.enter', function () {
       MomentService.getLanguagePrefix();
-      $timeout(function () {
-        if (ApprovalsService.entries.models) {
-          self.approvals.rows = ApprovalsService.entries.models;
-          self.inProgress = false;
-          $rootScope.$broadcast('show-content');
-        }
-      }, 2000);
       var promise = $q(function (resolve) {
         resolve(ApprovalsService.fetchCollection());
       });
@@ -139,6 +137,7 @@ angular.module('approval')
           if (!self.approvals.rows) {
             self.approvals.rows = ApprovalsService.entries.models;
           }
+          ApprovalsService.init = false;
         })
         .catch(function (e) {
           self.inProgress = false;
@@ -147,9 +146,20 @@ angular.module('approval')
     });
 
     $rootScope.$on('$translateChangeSuccess', function () {
-      console.log('bhsadgash');
       $rootScope.$broadcast('amMoment:localeChanged');
     });
+    this.getMore = function () {
+      if (ApprovalsService.entries && ApprovalsService.entries.models.length > 0) {
+        ApprovalsService.entries.fetchMore(self.moreOptions).then(function () {
+          if (!self.moreOptions.more) {
+            self.noMoreItemsAvailable = true;
+          }
+          $scope.$broadcast('scroll.infiniteScrollComplete');
+        });
+      } else {
+        $scope.$broadcast('scroll.infiniteScrollComplete');
+      }
+    };
   })
   .directive('delayedModel', function () {
     return {

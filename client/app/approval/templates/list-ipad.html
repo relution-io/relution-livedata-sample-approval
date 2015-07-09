@@ -73,6 +73,7 @@
         <ion-option-button ng-click="approvalListC.goEdit(approval.attributes.id, 'rejected')" class="button-assertive">{{::'REJECT' | translate}}</ion-option-button>
       </ion-item>
     </ion-list>
+    <ion-infinite-scroll ng-if="!approvalListC.noMoreItemsAvailable" on-infinite="approvalListC.getMore()" distance="5%"></ion-infinite-scroll>
     <div ng-if="approvalListC.approvals.rows.length < 1 || filtered.length < 1" ng-include="approvalListC.search ? 'approval/templates/empty-list-search.html':'approval/templates/empty-list.html'"></div>
   </ion-content>
 </ion-view>

@@ -28,16 +28,7 @@
       <i class="icon ion-ios-close-empty"></i>
     </button>
   </div>
-  <div class="bar-subheader low bar bar-positive">
-    <p>
-      {{'SWIPE_DOWN_HELP'|translate}}
-    </p>
-  </div>
-  <ion-content overflow-scroll="{{approvalListC.overflowScroll}}" class="home-list has-subheader-low" delegate-handle="approval-list" has-bouncing="false">
-    <ion-refresher
-      pulling-text="Pull to refresh..."
-      on-refresh="approvalListC.sync()">
-    </ion-refresher>
+  <ion-content overflow-scroll="true" class="home-list has-header" delegate-handle="approval-list" has-bouncing="true">
     <ion-list can-swipe="true">
       <ion-item
         ng-repeat="approval in filtered = (approvalListC.approvals.rows | filter:filterBy) track by approval.attributes.id"
@@ -73,6 +64,7 @@
         <ion-option-button ng-click="approvalListC.goEdit(approval.attributes.id, 'rejected')" class="button-assertive">{{::'REJECT' | translate}}</ion-option-button>
       </ion-item>
     </ion-list>
+    <ion-infinite-scroll ng-if="!approvalListC.noMoreItemsAvailable" on-infinite="approvalListC.getMore()" distance="5%"></ion-infinite-scroll>
     <div ng-if="approvalListC.approvals.rows.length < 1 || filtered.length < 1" ng-include="approvalListC.search ? 'approval/templates/empty-list-search.html':'approval/templates/empty-list.html'"></div>
   </ion-content>
 </ion-view>
