@@ -150,10 +150,8 @@ angular.module('approval')
     });
     this.getMore = function () {
       if (ApprovalsService.entries && ApprovalsService.entries.models.length > 0) {
-        ApprovalsService.entries.fetchMore(self.moreOptions).then(function () {
-          if (!self.moreOptions.more) {
-            self.noMoreItemsAvailable = true;
-          }
+        return ApprovalsService.entries.fetchMore(self.moreOptions).then(function () {
+          self.noMoreItemsAvailable = self.moreOptions.end;
           $scope.$broadcast('scroll.infiniteScrollComplete');
         });
       } else {
