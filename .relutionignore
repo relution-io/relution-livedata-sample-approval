@@ -1,0 +1,7 @@
+.git/
+client/*
+!client/www/**
+node_modules
+**/*.ts
+*.DS_STORE
+*.git

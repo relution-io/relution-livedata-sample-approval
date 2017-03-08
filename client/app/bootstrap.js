@@ -27,12 +27,6 @@
    */
   var CordovaInit = function () {
     /**
-     * Device is ready
-     */
-    var onDeviceReady = function () {
-      receivedEvent('deviceready');
-    };
-    /**
      * @param {event} event
      */
     var receivedEvent = function () {
@@ -68,11 +62,18 @@
       });
     };
     /**
+     * Device is ready
+     */
+    var onDeviceReady = function () {
+      receivedEvent('deviceready');
+    };
+    /**
      * add the eventlistener
      */
     this.bindEvents = function () {
       document.addEventListener('deviceready', onDeviceReady, false);
     };
+
     //If cordova is present, wait for it to initialize, otherwise just try to
     //bootstrap the application.
     if (window.cordova !== undefined) {

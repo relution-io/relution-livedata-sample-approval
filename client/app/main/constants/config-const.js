@@ -1,13 +1,14 @@
 'use strict';
+// jscs:disable
 angular.module('main')
   .constant('Config', {
     ENV: {
       /*inject-env*/
-      'SERVER_URL': 'http://10.21.4.130:8080',
-      'PUSH': {
-        'SERVER': '',
-        'GOOGLE_SENDER_ID': '608280733216'
-      }
+      'SERVER_URL': 'http://mway.relution.io',
+'PUSH': {
+  'SERVER': '',
+  'GOOGLE_SENDER_ID': '608280733216'
+}
       /*endinject*/
     },
     SERVER_API_PATH: '/mway/livedata-approval-sample',
@@ -89,3 +90,4 @@ angular.module('main')
     PUSH_APP_UUID: 'af6124a6-f216-4387-b664-fcdaa6cdcf0d',
     API_PUSH: '/push/api/v1/apps'
   });
+// jscs:enable

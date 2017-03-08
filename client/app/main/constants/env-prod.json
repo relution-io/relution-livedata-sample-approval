@@ -1,5 +1,5 @@
 {
-  "SERVER_URL": "http://10.21.4.130:8080",
+  "SERVER_URL": "http://mway.relution.io",
   "PUSH": {
     "SERVER": "",
     "GOOGLE_SENDER_ID": "608280733216"

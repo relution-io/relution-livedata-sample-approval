@@ -14,6 +14,8 @@ gulp.task('linting-throw', ['jshint-throw', 'jscs-throw', 'jsonlint-throw']);
 // check for jshint errors
 var jshint = function (fail) {
   return function () {
+    console.log(paths.jsFiles);
+    // debugger;
     return gulp.src(paths.jsFiles)
       .pipe($.jshint())
       .pipe($.jshint.reporter('jshint-stylish'))
