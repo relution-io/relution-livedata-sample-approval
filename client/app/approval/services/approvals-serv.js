@@ -5,14 +5,14 @@
  * @description add your description
  */
 angular.module('approval')
-  .service('ApprovalsService', function ApprovalsService($q, $rootScope, $window, $filter, RelutionLiveData, Config, ServerUrlService, AlertService) {
+  .service('ApprovalsService', function ApprovalsService ($q, $rootScope, $window, $filter, RelutionLiveData, Config, ServerUrlService, AlertService) {
     var self = this;
     this.pendings = [];
     this.init = true;
     this.counter = 10;
     this.entriesOptions = {
       limit: ionic.Platform.isIPad() ? 50 : 10,
-      sortOrder: [ '-approver[0].receivedDate', '-id' ]
+      sortOrder: ['-approver[0].receivedDate', '-id']
     };
     /**
      * @ngdoc property
@@ -51,7 +51,7 @@ angular.module('approval')
       return self.entries.select({
         query: {
           $or: [
-            {state: state}
+            { state: state }
           ]
         }
       });
@@ -128,7 +128,7 @@ angular.module('approval')
        * @eventType emit
        */
       this.entries.on('sync', function () {
-        console.log('sync');
+        //console.log('sync');
         $rootScope.$applyAsync();
       });
       /**

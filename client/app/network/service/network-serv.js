@@ -26,7 +26,7 @@
  * */
 'use strict';
 angular.module('network', [])
-  .service('NetworkService', function NetworkService($rootScope) {
+  .service('NetworkService', function NetworkService ($rootScope) {
     var self = this, initial = true;
     this.onlineStatus = initial;
     $rootScope.onlineStatus = initial;

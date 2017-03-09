@@ -22,7 +22,7 @@
 'use strict';
 angular.module('main')
   .factory('RelutionLiveData',
-  function RelutionLiveData($window) {
+  function RelutionLiveData ($window) {
     $window.Relution.setDebug(false);
     return $window.Relution.LiveData;
   }

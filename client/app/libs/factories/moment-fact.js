@@ -22,7 +22,7 @@
 'use strict';
 angular.module('libs')
   .factory('moment',
-  function moment($window) {
+  function moment ($window) {
     return $window.moment;
   }
 );

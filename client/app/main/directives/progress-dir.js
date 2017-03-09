@@ -7,7 +7,7 @@
  */
 angular.module('main')
 
-.directive('progressBar', function ProgressBar($window) {
+.directive('progressBar', function ProgressBar ($window) {
   return {
     template: '<div id="progress-bar">&nbsp;</div>',
     restrict: 'E',

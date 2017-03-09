@@ -26,7 +26,7 @@
  * @description preload translations
  */
 angular.module('translation.service', [])
-  .service('TranslationService', function TranslationService($http, Config, $q, $localForage) {
+  .service('TranslationService', function TranslationService ($http, Config, $q, $localForage) {
     var self = this;
     /**
      * @ngdoc property

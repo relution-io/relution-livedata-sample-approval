@@ -6,7 +6,7 @@
  * @description add your description
  */
 angular.module('approval')
-  .controller('ApprovalListCtrl', function ApprovalListCtrl($scope, $q, $filter, $timeout, $state, $ionicScrollDelegate, $ionicLoading, $window, MomentService, $rootScope, PushService, ApprovalsService) {
+  .controller('ApprovalListCtrl', function ApprovalListCtrl ($scope, $q, $filter, $timeout, $state, $ionicScrollDelegate, $ionicLoading, $window, MomentService, $rootScope, PushService, ApprovalsService) {
     this.available = true;
     this.inProgress = false;
     this.overflowScroll = ionic.Platform.isAndroid();
@@ -139,9 +139,10 @@ angular.module('approval')
           }
           ApprovalsService.init = false;
         })
-        .catch(function (e) {
+        .catch(function () {
+          //(e)
           self.inProgress = false;
-          console.error(e);
+          //console.error(e);
         });
     });
 

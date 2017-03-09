@@ -5,7 +5,7 @@
  * @function
  */
 angular.module('main')
-  .filter('moneyFormatter', function MoneyFormatter($translate) {
+  .filter('moneyFormatter', function MoneyFormatter ($translate) {
     return function (number) {
       if (number) {
         number = Number(number);

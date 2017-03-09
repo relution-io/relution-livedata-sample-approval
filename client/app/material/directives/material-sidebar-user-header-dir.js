@@ -6,7 +6,7 @@
  * @name material:material-sidebar-user-header
  */
 angular.module('material')
-.directive('materialSidebarUserHeader', function MaterialSidebarUserHeader(UserService) {
+.directive('materialSidebarUserHeader', function MaterialSidebarUserHeader (UserService) {
   return {
     templateUrl: 'material/templates/user-header.html',
     restrict: 'E',

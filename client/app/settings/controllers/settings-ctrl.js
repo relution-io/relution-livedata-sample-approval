@@ -6,7 +6,7 @@
  * @description add your description
  */
 angular.module('settings')
-  .controller('SettingsCtrl', function SettingsCtrl($scope, $ionicLoading, $rootScope, UserService, Config) {
+  .controller('SettingsCtrl', function SettingsCtrl ($scope, $ionicLoading, $rootScope, UserService, Config) {
     this.user = UserService.getUser();
     this.server = Config.ENV.SERVER_URL;
 

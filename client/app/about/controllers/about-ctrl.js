@@ -27,7 +27,7 @@
  * @description add your description
  */
 angular.module('about')
-  .controller('AboutCtrl', function AboutCtrl($scope, $window, $rootScope, $cordovaAppVersion, $ionicLoading, Config, HeaderService) {
+  .controller('AboutCtrl', function AboutCtrl ($scope, $window, $rootScope, $cordovaAppVersion, $ionicLoading, Config, HeaderService) {
     var self = this;
     this.bowerPackages = Config.BOWER_DEPENDENCIES;
     this.header = HeaderService;
@@ -41,18 +41,18 @@ angular.module('about')
 
         },
         {
-        iconColor: '#5394CA',
-        backgroundColor: '#ffffff',
-        isPDF: false,
-        url: url,
-        visibleAddress: false,
-        editableAddress: false,
-        icons: {
-          backward: true,
-          forward: true,
-          refresh: true
-        }
-      });
+          iconColor: '#5394CA',
+          backgroundColor: '#ffffff',
+          isPDF: false,
+          url: url,
+          visibleAddress: false,
+          editableAddress: false,
+          icons: {
+            backward: true,
+            forward: true,
+            refresh: true
+          }
+        });
     };
     $scope.$on('$ionicView.enter', function () {
       $ionicLoading.hide();

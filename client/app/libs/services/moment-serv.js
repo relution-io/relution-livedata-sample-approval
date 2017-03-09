@@ -4,7 +4,7 @@
  * @name libs:Moment
  */
 angular.module('libs')
-  .service('MomentService', function MomentService($translate, amMoment, $rootScope) {
+  .service('MomentService', function MomentService ($translate, amMoment, $rootScope) {
     var self = this;
     /**
      * @ngdoc method
@@ -50,7 +50,7 @@ angular.module('libs')
     };
 
     $rootScope.$on('$translateChangeSuccess', function () {
-      console.log('translation changed momentservice');
+      //console.log('translation changed momentservice');
       self.setLanguage();
     });
   });

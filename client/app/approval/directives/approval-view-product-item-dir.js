@@ -6,7 +6,7 @@
  * @name approval:approvalViewProductItem
  */
 angular.module('approval')
-  .directive('approvalViewProductItem', function ApprovalViewProductItem($ionicModal) {
+  .directive('approvalViewProductItem', function ApprovalViewProductItem ($ionicModal) {
     var postLink = function ($scope) {
       //var self = this;
       $ionicModal.fromTemplateUrl('approval/templates/widgets/modal-product-detail.html', {

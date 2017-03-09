@@ -20,6 +20,8 @@
  * ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
  * POSSIBILITY OF SUCH DAMAGE.
  */
+/*ignore jslint start*/
+/*eslint-disable*/
 (function (angular, localforage, deferredBootstrapper) {
   /**
    * Bootstrap your applicatin on device ready if is device defined
@@ -86,3 +88,5 @@
     new CordovaInit();
   });
 }(window.angular, localforage, window.deferredBootstrapper));
+/*eslint-enable*/
+/*ignore jslint end*/

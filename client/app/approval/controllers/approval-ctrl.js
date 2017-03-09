@@ -6,7 +6,7 @@
  * @description add your description
  */
 angular.module('approval')
-  .controller('ApprovalCtrl', function ApprovalCtrl(Config, UserService, LoginService, $relutionSecurityConfig) {
+  .controller('ApprovalCtrl', function ApprovalCtrl (Config, UserService, LoginService, $relutionSecurityConfig) {
     this.sideBarLinks = Config.SIDEBAR_LINKS;
     this.user = UserService.getUser();
     this.config = $relutionSecurityConfig;
