@@ -14,7 +14,7 @@ angular.module('material')
       scope: {
         links: '='
       },
-      link: function postLink(scope, element, attrs, MaterialSidebarCtrl) {
+      link: function postLink (scope, element, attrs, MaterialSidebarCtrl) {
         var getActive = function (state) {
           for (var i = 0, l = scope.links.length; i < l; i++) {
             if (scope.links[i].state === state) {

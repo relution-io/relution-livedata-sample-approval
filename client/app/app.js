@@ -44,7 +44,7 @@ angular.module('relutionLiveData', [
   .run(function ($ionicPlatform, $window) {
     $ionicPlatform.ready(function () {
       if ($window.cordova && $window.cordova.plugins && $window.cordova.plugins.Keyboard) {
-        cordova.plugins.Keyboard.hideKeyboardAccessoryBar(true);
+        $window.cordova.plugins.Keyboard.hideKeyboardAccessoryBar(true);
       }
       if ($window.StatusBar) {
         $window.StatusBar.styleLightContent();
@@ -113,19 +113,20 @@ angular.module('relutionLiveData', [
     if ($window.cordova) {
       $cordovaSplashscreen.hide();
     }
-    $rootScope.$on('$stateNotFound',
-      function (event, unfoundState, fromState, fromParams) {
-        console.log(unfoundState.to); // "lazy.state"
-        console.log(unfoundState.toParams); // {a:1, b:2}
-        console.log(unfoundState.options); // {inherit:false} + default options
-        console.log(fromState); // {inherit:false} + default options
-        console.log(fromParams); // {inherit:false} + default options
-      });
+    // $rootScope.$on('$stateNotFound',
+    //   function (event, unfoundState, fromState, fromParams) {
+    //     console.log(unfoundState.to); // "lazy.state"
+    //     console.log(unfoundState.toParams); // {a:1, b:2}
+    //     console.log(unfoundState.options); // {inherit:false} + default options
+    //     console.log(fromState); // {inherit:false} + default options
+    //     console.log(fromParams); // {inherit:false} + default options
+    //   });
     $rootScope.$on('$stateChangeError',
-      function (event, toState, toParams, fromState, fromParams, error) {
-        console.log(error); // "lazy.state"
-        console.log(fromState); // {inherit:false} + default options
-        console.log(fromParams); // {inherit:false} + default options
+      function () {
+        // event, toState, toParams, fromState, fromParams, error
+        // console.log(error); // "lazy.state"
+        // console.log(fromState); // {inherit:false} + default options
+        // console.log(fromParams); // {inherit:false} + default options
         $state.go('mway.login');
       });
   });

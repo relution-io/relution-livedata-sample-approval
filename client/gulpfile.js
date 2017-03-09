@@ -1,6 +1,3 @@
-// generated on 2015-01-12 using generator-m 0.2.7
-/* jshint -W079 */ // prevent redefinition of $ warning
-
 'use strict';
 var gulp = require('gulp');
 var minimist = require('minimist');
@@ -9,20 +6,33 @@ var chalk = require('chalk');
 var fs = require('fs');
 
 // config
-gulp.paths = {
+var paths = gulp.paths = {
+  bowerComponents: 'app/bower_components',
   dist: 'www',
   jsFiles: ['app/**/*.js', '!app/bower_components/**/*.js'],
-  jsonFiles: ['app/**/*.json', '!app/bower_components/**/*.json']
+  jsonFiles: ['app/**/*.json', '!app/bower_components/**/*.json'],
+  scssFiles: ['app/*/styles/**/*.scss'],
+  cssFiles: ['.tmp/*/styles/*.css'],
+  templates: ['app/*/templates/**/*'],
+  contrib: ['gulpfile.js', 'gulp/**/*.js', 'hooks/**/*.js'],
+  karma: ['test/karma/**/*.js'],
+  protractor: ['test/protractor/**/*.js']
 };
+paths.watchFiles = paths.jsFiles
+  .concat([
+    'app/index.html',
+    'app/*/assets/**/*'
+  ])
+  .concat(paths.templates);
 
 // OPTIONS
 var options = gulp.options = minimist(process.argv.slice(2));
 
-// set defaults
+// load .gulp_settings.json
 var task = options._[0]; // only for first task
 var gulpSettings;
-if (fs.existsSync('./gulp_tasks/.gulp_settings.json')) {
-  gulpSettings = require('./gulp_tasks/.gulp_settings.json');
+if (fs.existsSync('./gulp/.gulp_settings.json')) {
+  gulpSettings = require('./gulp/.gulp_settings.json');
   var defaults = gulpSettings.defaults;
   if (defaults) {
     // defaults present for said task?
@@ -45,29 +55,38 @@ options.env = options.env || 'dev';
 if (defaults && defaults[task]) {
   console.log(chalk.green('defaults for task \'' + task + '\': '), defaults[task]);
 }
-// gulp build before running cordova?
-if (options.cordova && options.build !== false) { // --no-build
-  var cmds = ['build', 'run', 'emulate', 'prepare'];
-  for (var i = 0, cmd; (cmd = cmds[i]); i++) {
+// cordova command one of cordova's build commands?
+if (options.cordova) {
+  var cmds = ['build', 'run', 'emulate', 'prepare', 'serve'];
+  for (var i = 0, cmd; ((cmd = cmds[i])); i++) {
     if (options.cordova.indexOf(cmd) >= 0) {
-      options.runBuild = true;
+      options.cordovaBuild = true;
       break;
     }
   }
 }
 
 // load tasks
-requireDir('./gulp_tasks');
+requireDir('./gulp');
 
 // default task
 gulp.task('default', function () {
-  // cordova with build
-  if (options.runBuild) {
+  // cordova build command & gulp build
+  if (options.cordovaBuild && options.build !== false) {
     return gulp.start('cordova-with-build');
   }
-  // cordova without build
+  // cordova build command & no gulp build
+  else if (options.cordovaBuild && options.build === false) {
+    return gulp.start('cordova-only-resources');
+  }
+  // cordova non-build command
   else if (options.cordova) {
     return gulp.start('cordova');
+  }
+  // livereload command
+  else if (options.livereload) {
+    options.build = false; // build not necessary, take whatever's in www
+    return gulp.start('livereload');
   }
   // just watch when cordova option not present
   else {

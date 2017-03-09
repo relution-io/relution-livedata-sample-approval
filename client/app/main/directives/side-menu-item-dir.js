@@ -6,14 +6,14 @@
  * @name main:SideMenuItem
  */
 angular.module('main')
-  .directive('sideMenuItem', function SideMenuItem($rootScope, $state, $ionicSideMenuDelegate, $timeout) {
+  .directive('sideMenuItem', function SideMenuItem ($rootScope, $state, $ionicSideMenuDelegate, $timeout) {
     return {
       templateUrl: 'main/templates/directives/side-menu-item.html',
       restrict: 'AEC',
       scope: {
         links: '='
       },
-      link: function postLink(scope) {
+      link: function postLink (scope) {
         scope.changeRoute = function () {
           if ($ionicSideMenuDelegate.$getByHandle('app-side-menu').isOpen()) {
             $timeout(function () {

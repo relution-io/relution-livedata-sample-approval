@@ -5,7 +5,7 @@
  * @description add your description
  */
 angular.module('push')
-  .service('PushService', function PushService($cordovaDevice, $http, $localForage, $q, $rootScope, $window, PushAndroidService, PushIosService, Config) {
+  .service('PushService', function PushService ($cordovaDevice, $http, $localForage, $q, $rootScope, $window, PushAndroidService, PushIosService, Config) {
     var self = this;
     this.storageKey = Config.PUSH_DEVICE_KEY || '__PUSH_DEVICE__';
     this.registerService = null;
@@ -25,11 +25,12 @@ angular.module('push')
      * @description log some messages in console if is enabled
      * @methodOf push:PushService
      */
-    this.log = function (message, vo) {
+    this.log = function () {
+      //(message, vo)
       if (Config.ENV.DEBUG.PUSH) {
-        console.log('############## Start - ' + message + '##############');
-        console.log(vo);
-        console.log('############## END - ' + message + '##############');
+        //console.log('############## Start - ' + message + '##############');
+        //console.log(vo);
+        //console.log('############## END - ' + message + '##############');
       }
     };
 
@@ -87,9 +88,7 @@ angular.module('push')
         'badge': 0
       };
       self.log('createPushDevice', pushDevice);
-      $http.post(self.url, pushDevice).
-        success(self.successPushServer).
-        error(self.errorPushServer);
+      $http.post(self.url, pushDevice).success(self.successPushServer).error(self.errorPushServer);
     };
     /**
      * @ngdoc method
@@ -99,9 +98,7 @@ angular.module('push')
      */
     this.updatePushDevice = function (pushDevice, token) {
       pushDevice.token = token;
-      $http.put(self.url + '/' + pushDevice.uuid, pushDevice).
-        success(self.success).
-        error(self.fail);
+      $http.put(self.url + '/' + pushDevice.uuid, pushDevice).success(self.success).error(self.fail);
     };
     /**
      * @ngdoc method
@@ -144,7 +141,7 @@ angular.module('push')
      */
     this.register = function () {
       if (!$window.cordova) {
-        return console.log('works only on devices');
+        return /*console.log*/('works only on devices');
       }
       if (ionic.Platform.isAndroid()) {
         self.registerService = PushAndroidService;
@@ -152,7 +149,7 @@ angular.module('push')
         //return false;
         self.registerService = PushIosService;
       } else {
-        return console.log('This Platform is still not supported');
+        return /*console.log*/('This Platform is still not supported');
       }
       var promise = $q(function (resolve) {
         resolve(self.registerService.register());

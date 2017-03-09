@@ -6,7 +6,7 @@
  * @name approval:ViewFooterBar
  */
 angular.module('approval')
-  .directive('approvalViewFooterBar', function ApprovalViewFooterBar() {
+  .directive('approvalViewFooterBar', function ApprovalViewFooterBar () {
     var postLink = function () {
       ////console.log($scope);
       var self = this;

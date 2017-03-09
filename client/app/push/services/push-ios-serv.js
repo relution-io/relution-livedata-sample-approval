@@ -5,7 +5,7 @@
  * @description add your description
  */
 angular.module('push')
-  .service('PushIosService', function PushIosService($cordovaPush, $rootScope) {
+  .service('PushIosService', function PushIosService ($cordovaPush, $rootScope) {
     var self = this;
     this.url = null;
     this.provider = 'APNS';

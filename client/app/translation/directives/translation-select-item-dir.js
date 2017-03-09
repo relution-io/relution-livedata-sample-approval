@@ -12,7 +12,7 @@
  * @name translation:TranslationSelectItem
  */
 angular.module('translation')
-  .directive('translationSelectItem', function TranslationSelectItem($filter, Config, $translate, TranslationService) {
+  .directive('translationSelectItem', function TranslationSelectItem ($filter, Config, $translate, TranslationService) {
     var postLink = function ($scope, $element) {
       $element.addClass('item item-input item-select');
       var self = this;

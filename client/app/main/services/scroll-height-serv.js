@@ -5,7 +5,7 @@
  * @description add your description
  */
 angular.module('main')
-  .service('ScrollHeightService', function ScrollHeightService() {
+  .service('ScrollHeightService', function ScrollHeightService () {
     var self = this;
 
     this.screen = {

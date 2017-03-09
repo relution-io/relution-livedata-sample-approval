@@ -27,7 +27,7 @@
  * @description add your description
  */
 angular.module('auth')
-  .controller('LoginCtrl', function LoginCtrl($scope, $state, $filter, LoginService, AlertService, $relutionSecurityConfig) {
+  .controller('LoginCtrl', function LoginCtrl ($scope, $state, $filter, LoginService, AlertService, $relutionSecurityConfig) {
     var self = this;
     /**
      * @ngdoc property

@@ -6,7 +6,7 @@
  * @description add your description
  */
 angular.module('approval')
-  .controller('ApprovalEditCtrl', function ApprovalEditCtrl($scope, $q, $stateParams, $filter, $timeout, ApprovalsService, AlertService, $ionicLoading, $ionicHistory, $state) {
+  .controller('ApprovalEditCtrl', function ApprovalEditCtrl ($scope, $q, $stateParams, $filter, $timeout, ApprovalsService, AlertService, $ionicLoading, $ionicHistory, $state) {
     var self = this;
     this.state = $stateParams.state;
     this.translationKey = this.state.toUpperCase();
@@ -55,9 +55,10 @@ angular.module('approval')
           });
           self.redirect();
           //console.log('doc', self.approval, model.attributes);
-        }).catch(function (e) {
-          console.error('Cant find model with id ' + $stateParams.id);
-          console.error(e);
+        }).catch(function () {
+          //(e)
+          //console.error('Cant find model with id ' + $stateParams.id);
+          //console.error(e);
         });
       }
     };
@@ -67,8 +68,9 @@ angular.module('approval')
       promise.then(function (doc) {
         self.model = doc;
         self.approval = doc.attributes;
-      }).catch(function (e) {
-        console.error(e);
+      }).catch(function () {
+        //(e)
+        //console.error(e);
       });
     });
   });

@@ -6,7 +6,7 @@
  */
 angular.module('main')
 
-.directive('preloadBody', function PreloadBody($rootScope) {
+.directive('preloadBody', function PreloadBody ($rootScope) {
   return {
     restrict: 'AEC',
     link: function postLink () {

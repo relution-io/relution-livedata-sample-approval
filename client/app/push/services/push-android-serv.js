@@ -5,7 +5,7 @@
  * @description add your description
  */
 angular.module('push')
-  .service('PushAndroidService', function PushAndroidService($cordovaPush, Config, $rootScope) {
+  .service('PushAndroidService', function PushAndroidService ($cordovaPush, Config, $rootScope) {
     var self = this;
     this.provider = 'GCM';
     /**

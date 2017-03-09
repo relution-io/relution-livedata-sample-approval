@@ -26,7 +26,7 @@
  * @description add your description
  */
 angular.module('main')
-  .service('AlertService', function AlertService($ionicPopup) {
+  .service('AlertService', function AlertService ($ionicPopup) {
     //console.log('Hello from your Service: Alert in module main');
     var self = this;
     this.title = 'Alert';

@@ -5,12 +5,12 @@
  * @name material:material-sidebar-toggle
  */
 angular.module('material')
-  .directive('materialSidebarToggle', function MaterialSidebarToggle(Config, $timeout) {
+  .directive('materialSidebarToggle', function MaterialSidebarToggle (Config, $timeout) {
     return {
       require: '^materialSidebar',
       template: '<button class="button button-clear material-toggle-button" side="primary" ng-click="openSideBar()"></button>',
       restrict: 'AEC',
-      link: function postlink(scope, element, attrs, SidebarCtrl) {
+      link: function postlink (scope, element, attrs, SidebarCtrl) {
         var _options = {
           h: 64,
           w: 64,
@@ -37,6 +37,7 @@ angular.module('material')
             if (motion) {
               /*jshint -W083 */
               /*jshint -W062 */
+              /*eslint-disable*/
               $timeout(function (el, val, animProp) {
                 return function () {
                   el.animate(JSON.parse(val), _options.speed, _options.easing, function () {
@@ -49,6 +50,7 @@ angular.module('material')
                   });
                 };
               }(el, val, animProp), timeout * _options.speed);
+              /*eslint-enable*/
               /*jshint +W083 */
               /*jshint +W062 */
             }
@@ -68,7 +70,7 @@ angular.module('material')
             svg.append(g);
           });
           scope.$on('sidebar-state-changed', function (event, state) {
-            console.log('changed');
+            //console.log('changed');
             if (state === 'open') {
               toggled = false;
             } else {

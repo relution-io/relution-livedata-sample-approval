@@ -6,7 +6,7 @@
  * @description add your description
  */
 angular.module('approval')
-  .controller('ApprovalViewCtrl', function ApprovalViewCtrl($scope, $stateParams, $q, ApprovalsService, $ionicSlideBoxDelegate, ScrollHeightService, $ionicLoading) {
+  .controller('ApprovalViewCtrl', function ApprovalViewCtrl ($scope, $stateParams, $q, ApprovalsService, $ionicSlideBoxDelegate, ScrollHeightService, $ionicLoading) {
     var _slideDelegate = 'approval-view-slider';
     var self = this;
     var tabButtons = null;
@@ -79,11 +79,12 @@ angular.module('approval')
         $ionicLoading.hide();
         if (doc && doc.attributes) {
           self.approval = doc.attributes;
-          console.log('doc', self.approval);
+          //console.log('doc', self.approval);
         }
-      }).catch(function (e) {
+      }).catch(function () {
+        //(e)
         $ionicLoading.hide();
-        console.error(e);
+        //console.error(e);
       });
       self.toggleButtons($ionicSlideBoxDelegate.$getByHandle(_slideDelegate).currentIndex());
     });

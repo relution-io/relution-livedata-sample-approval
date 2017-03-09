@@ -6,7 +6,7 @@
  * @name material:material-sidebar
  */
 angular.module('material')
-  .directive('materialSidebar', function MaterialSidebar($timeout) {
+  .directive('materialSidebar', function MaterialSidebar ($timeout) {
     return {
       restrict: 'A',
       controllerAs: 'materialSidebarCtrl',

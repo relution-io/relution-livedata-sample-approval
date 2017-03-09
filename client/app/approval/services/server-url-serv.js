@@ -5,7 +5,7 @@
  * @description add your description
  */
 angular.module('approval')
-  .service('ServerUrlService', function ServerUrlService($localForage, $q, AlertService, Config) {
+  .service('ServerUrlService', function ServerUrlService ($localForage, $q, AlertService, Config) {
     var self = this;
     this.connection = null;
     this.key = 'server-url';

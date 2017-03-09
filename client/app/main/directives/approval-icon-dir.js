@@ -6,7 +6,7 @@
  * @name main:approval-icon
  */
 angular.module('main')
-  .directive('approvalIcon', function ApprovalIcon() {
+  .directive('approvalIcon', function ApprovalIcon () {
     return {
       template: '<i class="icon icon-{{getIcon()}} approval-{{state}} object-type-{{objectType}}"></i>',
       restrict: 'E',
@@ -14,7 +14,7 @@ angular.module('main')
         state: '=',
         objectType: '='
       },
-      link: function postLink(scope) {
+      link: function postLink (scope) {
         scope.getIcon = function () {
           if (scope.state !== 'open' && scope.objectType === 'SC') {
             return 'ic_type_order_change';

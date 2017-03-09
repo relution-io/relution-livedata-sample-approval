@@ -7,7 +7,7 @@ angular.module('approval', ['main'])
         url: '/approval',
         abstract: true,
         views: {
-          mway:{
+          mway: {
             templateUrl: ionic.Platform.isAndroid() ? 'approval/templates/approval-android.html' : 'approval/templates/approval.html'
           }
         },
@@ -51,7 +51,7 @@ angular.module('approval', ['main'])
                 deleteCounter++;
               }
             }
-            return $q.when(console.log('Deleted ' + deleteCounter + ' gapFrames'));
+            return $q.when(/*console.log*/('Deleted ' + deleteCounter + ' gapFrames'));
           }
         }
       })
@@ -76,4 +76,4 @@ angular.module('approval', ['main'])
         }
       });
   })
-;
+  ;

@@ -33,7 +33,7 @@ angular.module('about', [])
         url: '/about',
         views: {
           'approval': {
-            templateUrl:  ionic.Platform.isAndroid() ? 'about/templates/about-android.html' : 'about/templates/about.html',
+            templateUrl: ionic.Platform.isAndroid() ? 'about/templates/about-android.html' : 'about/templates/about.html',
             controller: 'AboutCtrl as aboutC'
           }
         }
