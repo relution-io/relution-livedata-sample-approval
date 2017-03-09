@@ -1,5 +1,7 @@
 #Relution Livedata Sample Approval
 
+[![Join the chat at https://gitter.im/mwaylabs/relution-livedata-sample-approval](https://badges.gitter.im/mwaylabs/relution-livedata-sample-approval.svg)](https://gitter.im/mwaylabs/relution-livedata-sample-approval?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
+
 ###Dependencies:
 - node
 - cordova
